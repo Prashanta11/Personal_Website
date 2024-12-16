@@ -14,3 +14,23 @@ export const sendMessage = catchAsyncError(async(req,res,next)=>{
         data,
     });
 });
+export const getAllMessages =catchAsyncError(async(req,res,next)=>{
+const messages=await Message.find();
+res.status(200).json({
+    sucess:"true",
+    messages,
+});
+});
+
+export const deleteMessage= catchAsyncError(async(req,res,nest)=>{
+    const{ id }=req.params;
+const message= await Message.findById(id);
+if(!message){
+    return next(new ErrorHandler("message already deleted",400));
+}
+await message.deleteOne();
+res.status(200).json({
+    sucess:True,
+    message: "Message Deleted",
+});
+});
