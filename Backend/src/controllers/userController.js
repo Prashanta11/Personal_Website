@@ -14,19 +14,57 @@ export const register = catchAsyncError(async(req ,res , next)=>{
 if(!cloudinaryResponseForAvatar||cloudinaryResponseForAvatar.error){
     console.error(
         "cloudinary error:",
-        cloudinaryResponseForAvatar.error|| "unknmown cloudinary error"
+        cloudinaryResponseForAvatar.error|| "unknown cloudinary error"
         );
     }
 
     const cloudinaryResponseForResume = Cloudinary.uploader.upload(
-        avatar.tempFilePath,
-        {folder: "AVATARS"}
+        resume.tempFilePath,
+        {folder: "RESUME"}
         );
-    if(!cloudinaryResponseForAvatar||cloudinaryResponseForAvatar.error){
+    if(!cloudinaryResponseForResume||cloudinaryResponseForResume.error){
         console.error(
             "cloudinary error:",
-            cloudinaryResponseForAvatar.error|| "unknmown cloudinary error"
+            cloudinaryResponseForResume.error|| "unknown cloudinary error"
             );
         }
+const{ 
+    fullName,
+    email,
+    phone,
+    aboutMe,
+    password,
+    portfolioURL,
+    githubURL,
+    facebookURL,
+    linkedinURL,
+    instagramURL} = req.body;
+
+    const user = await user.create({
+        fullName,
+        email,
+        phone,
+        aboutMe,
+        password,
+        portfolioURL,
+        githubURL,
+        facebookURL,
+        linkedinURL,
+        instagramURL,   
+        avatar:{
+            public_id:cloudinaryResponseForAvatar.public_id,
+            
+            url:cloudinaryResponseForAvatar.secure_url,
+        },
+        resume:{
+            public_id:cloudinaryResponseForAvatar.public_id,
+            
+            url:cloudinaryResponseForAvatar.secure_url,
+        },
+    });
+    res.status(200).json({
+        sucess:true,
+        message:"user registered",
+    });
 
 });
