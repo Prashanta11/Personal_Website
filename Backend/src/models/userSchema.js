@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.schmema({
+const userSchema = new mongoose.Schema({
     fullName: {
         type: String,
         required:[true, "Name Required"],
@@ -35,6 +35,16 @@ const userSchema = new mongoose.schmema({
             required: true,
         },
     },
+    avatar: {
+        public_id:{
+            type: String,
+            required: true,
+        },
+        url:{
+            type: String,
+            required: true,
+        },
+    },
     portfolioURL:{
      type: String,
      required:["Portfolio URL is Required"] ,
@@ -54,7 +64,7 @@ userSchema.pre("save", async function (next) {
     if(!this.isModified("password")){
         next();
     }
-    this.password= await bcrypt.hash(this,this.password,10);
+    this.password= await bcrypt.hash(this.password,10);
 });
 
 // Compare Password with hashed Password
@@ -69,4 +79,4 @@ userSchema.methods.generateJsonWebToken =  function(){
         expireIn: process.env.JWT_EXPIRES
     });
 };
-export const user = mongoose.model("user", userSchema);
+export const User = mongoose.model("User", userSchema);
