@@ -1,11 +1,13 @@
 import { v2 as Cloudinary } from "cloudinary";
+import crypto from "crypto";
 import { catchAsyncError } from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../middlewares/error.js";
 import { User } from "../models/userSchema.js";
 import { generateToken } from "../utils/jwtToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
+
 export const register = catchAsyncError(async (req, res, next) => {
-  if (Object.keys(req.files).length === 0) {
+  if (!req.files || Object.keys(req.files).length === 0) {
     return next(new ErrorHandler("Avatar and  Resume Are Required", 400));
   }
   const { avatar } = req.files;
@@ -196,12 +198,13 @@ res.status(200).json({
   });
   if (!user){
     return next(new ErrorHandler("User not Found",404));
-
   }
+
   const resetToken = user.getResetPasswordToken();
+  
   await user.save({ validateBeforeSave: false});
- const resetPasswordUrl = `${process.env. DASHBOARD_URL}/password/reset/${resetToken}`
- const message = `Your Reset Password Token is:-\n\n If you haven't requested this please ignore  it`;
+ const resetPasswordurl = `${process.env. DASHBOARD_URL}/password/reset/${resetToken}`
+ const message = `Your Reset Password Token is:- \n\n ${resetPasswordurl} If you haven't requested this please ignore  it`;
  try {
   await sendEmail({
     email: user.email,
@@ -218,4 +221,27 @@ res.status(200).json({
   await user.save();
   return next (new ErrorHandler(error.message,500));
  }
+ });
+
+ export const resetPassword = catchAsyncError(async(req,res,next)=>{
+  const {token} = req.params;
+  const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
+
+  const existingUser = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: {$gt: Date.now() },
+  });
+  if (!existingUser){
+    return next ( new  ErrorHandler("Reset password token is invalid or expired",400));
+  
+  }
+  if(req.body.password !== req.body.confirmPassword){
+    return next( new ErrorHandler(" Password and  Confirm Password do not match"));
+  }
+
+existingUser.password = await req.body.password;
+existingUser.resetPasswordExpire  = undefined;
+existingUser.resetPasswordToken = undefined;
+await existingUser.save();
+generateToken(existingUser, "Reset Password Successfully",200,res);  
  });
