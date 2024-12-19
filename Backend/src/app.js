@@ -4,6 +4,8 @@ import express from "express";
 import fileUpload from "express-fileupload";
 import { errorMiddleware } from "./middlewares/error.js";
 import messageRoutes from "./routes/messageRoutes.js";
+import applicationRouter from "./routes/softwareApplicationRoutes.js";
+import timelineRouter from "./routes/timelineRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 
 const app=express();
@@ -25,9 +27,9 @@ app.use(fileUpload({
 })
 );
 app.use("/api/v1/message", messageRoutes);
- 
 app.use("/api/v1/user", userRouter);
- 
+app.use("/api/v1/timeline", timelineRouter);
+app.use("/api/v1/softwareApplication", applicationRouter);
 app.use(errorMiddleware);
 
 export default app;
