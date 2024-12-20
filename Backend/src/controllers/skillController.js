@@ -40,6 +40,49 @@ export const addNewSkill = catchAsyncError(async(req, res, next)=>{
       });
 });
 
-export const deleteSkill = catchAsyncError(async(req, res, next)=>{});
-export const  updateSkill = catchAsyncError(async(req, res, next)=>{});
-export const getAllSkill= catchAsyncError(async(req, res, next)=>{});
+export const deleteSkill = catchAsyncError(async(req, res, next)=>{
+    const {id} =req.params;
+    const skill = await Skill.findById(id);
+    if(!skill){
+      return next(new ErrorHandler("Skill not Found",404));
+    }
+      const skillSvgId = skill.svg.public_id;
+      await Cloudinary.uploader.destroy (skillSvgId);
+      await skill.deleteOne();
+      res.status(200).json({
+        success: true,
+        message: "Skills  deleted",
+      });
+});
+
+export const  updateSkill = catchAsyncError(async(req, res, next)=>{
+    const {id} =req.params;
+
+    const {Proficiency}=req.body;
+    const skill = await Skill.findByIdAndUpdate(
+        id,
+        {Proficiency},
+    {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+    });
+
+    if(!skill){
+        return next(new ErrorHandler("Skill not Found",404));
+      }
+
+    res.status(200).json({
+        success: true,
+        message: "Updated Skills!",
+        skill,
+    })
+});
+
+export const getAllSkill= catchAsyncError(async(req, res, next)=>{
+ const skill = await Skill.find();
+    res.status(200).json({
+        success: true,
+        skill,
+    });
+});
