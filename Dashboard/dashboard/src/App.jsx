@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "./App.css";
+import ForgotPassword from "./pages/ForgotPassword";
+import HomePage from './pages/HomePage';
+import Login from "./pages/Login";
+import ManageProject from "./pages/ManageProject";
+import ManageSkill from "./pages/ManageSkill";
+import ManageTimeline from "./pages/ManageTimeline";
+import ResetPassword from "./pages/ResetPassword";
+import UpdateProject from "./pages/UpdateProject";
+import ViewProject from "./pages/ViewProject";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element= {<HomePage/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/password/forgot" element ={<ForgotPassword/>}/>
+        <Route path="/password/reset/:token" element ={<ResetPassword/>}/>
+        <Route path="/manage/skill" element ={<ManageSkill/>}/>
+        <Route path="/manage/timeline" element ={<ManageTimeline/>}/>
+        <Route path="/manage/projects" element ={<ManageProject/>}/>
+        <Route path="/view/project/:id" element ={<ViewProject/>}/>
+        <Route path="/update/project/:id" element ={<UpdateProject/>}/>
 
-export default App
+      </Routes>
+      <ToastContainer position="bottom-right" theme="dark"/>
+    </Router>
+  );
+};
+
+export default App;
