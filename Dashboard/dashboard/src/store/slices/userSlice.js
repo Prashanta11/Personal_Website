@@ -53,4 +53,8 @@ export const  login = (email, password)=>async(dispatch)=>{
     dispatch( userSlice.actions.loginFailed(error.response.data.message));
   }
 };
+
+export const clearAllErrors =()=>(dispatch)=> {
+  dispatch(userSlice.actions.clearAllErrors());
+};
 export default userSlice.reducer;
