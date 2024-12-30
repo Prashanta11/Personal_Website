@@ -1,15 +1,38 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { cn } from "@/lib/utils"
+import { clearAllErrors, login } from "@/store/slices/userSlice"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify"; // Assuming you are using react-toastify for toast notifications
 
-export function Login({
-  className,
-  ...props
-}) {
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, isAuthenticated, error } = useSelector(
+    state => state.user
+  );
+  const dispatch = useDispatch();
+  const navigateTo = useNavigate();
+
+  const handleLogin = () => {
+    dispatch(login({ email, password }));
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearAllErrors());
+    }
+    if (isAuthenticated) {
+      navigateTo("/");
+    }
+  }, [dispatch, isAuthenticated, error, loading]);
+
   return (
-    <div className={cn("flex flex-col items-center justify-center min-h-screen w-2/6  mx-auto", className)} {...props}>
+    <div className={cn("flex flex-col items-center justify-center min-h-screen w-2/6 mx-auto", className)} {...props}>
       <Card className="overflow-hidden w-full">
         <CardContent className="grid p-0 md:grid-cols-1">
           <form className="p-6 md:p-8">
@@ -27,6 +50,8 @@ export function Login({
                   type="email"
                   placeholder="m@example.com"
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
@@ -39,9 +64,15 @@ export function Login({
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full" onClick={handleLogin}>
                 Login
               </Button>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center ">
@@ -93,7 +124,7 @@ export function Login({
         and <a href="#">Privacy Policy</a>.
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
