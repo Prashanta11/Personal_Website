@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { clearAllErrors, login } from "@/store/slices/userSlice";
+import { clearAllUserErrors, login } from "@/store/slices/userSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -20,13 +20,13 @@ const Login = ({ className, ...props }) => {
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent the default form submission
-    dispatch(login({ email, password }));
+    dispatch(login( email, password ));
   };
 
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearAllErrors());
+      dispatch(clearAllUserErrors());
     }
     if (isAuthenticated) {
       navigateTo("/");
@@ -42,7 +42,7 @@ const Login = ({ className, ...props }) => {
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
                 <p className="text-balance text-muted-foreground">
-                  Login to your Acme Inc account
+                  Login to your account
                 </p>
               </div>
               <div className="grid gap-2">
