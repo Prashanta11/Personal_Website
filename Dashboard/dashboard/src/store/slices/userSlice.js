@@ -1,60 +1,61 @@
-// userSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+// Define the async thunk for login
+export const login = createAsyncThunk('user/login', async ({ email, password }, { rejectWithValue }) => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:5000/api/v1/user/login",
+      { email, password },
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
+    );
+    return data.user;
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return rejectWithValue(error.response.data.message);
+    } else {
+      return rejectWithValue(error.message);
+    }
+  }
+});
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
     loading: false,
-    user:{},
+    user: {},
     isAuthenticated: false,
     error: null,
     message: null,
     isUpdated: false,
   },
   reducers: {
-  
-    loginRequest(state, action) {
-      state.loading= true;
-      state.isAuthenticated = false;
-      state.user= {};
+    clearAllErrors(state) {
       state.error = null;
     },
-    loginSuccess(state, action) {
-      state.loading= false;
-      state.isAuthenticated = true;
-      state.user= action.payload;
-      state.error = null;
-    },
-    loginFailed(state, action) {
-      state.loading= false;
-      state.isAuthenticated = false;
-      state.user= {};
-      state.error = action.payload;
-    },
-    clearAllErrors(state,action){
-      state.error= null;
-      state.user = state.user;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(login.pending, (state) => {
+        state.loading = true;
+        state.isAuthenticated = false;
+        state.user = {};
+        state.error = null;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+        state.error = null;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.loading = false;
+        state.isAuthenticated = false;
+        state.user = {};
+        state.error = action.payload;
+      });
   },
 });
 
-export const  login = (email, password)=>async(dispatch)=>{
-  dispatch(userSlice.actions.loginRequest());
-  try {
-    const{ data } = await axios.post(
-      "",
-      { email, password },
-      { withCredentials : true, headers: { "Content-Type": " application/json" }}
-    );
-
-    dispatch(userSlice.actions.loginSuccess(data.user));
-    dispatch(userSlice.actions.clearAllErrors());
-  } catch (error) {
-    dispatch( userSlice.actions.loginFailed(error.response.data.message));
-  }
-};
-
-export const clearAllErrors =()=>(dispatch)=> {
-  dispatch(userSlice.actions.clearAllErrors());
-};
+export const { clearAllErrors } = userSlice.actions;
 export default userSlice.reducer;
