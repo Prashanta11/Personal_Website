@@ -1,14 +1,15 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { cn } from "@/lib/utils"
-import { clearAllErrors, login } from "@/store/slices/userSlice"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import { Button } from "@/components/ui/button"; // Import the Button component
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { clearAllErrors, login } from "@/store/slices/userSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"; // Assuming you are using react-toastify for toast notifications
 
-const Login = () => {
+const Login = ({ className, ...props }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { loading, isAuthenticated, error } = useSelector(
@@ -17,7 +18,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault(); // Prevent the default form submission
     dispatch(login({ email, password }));
   };
 
@@ -35,7 +37,7 @@ const Login = () => {
     <div className={cn("flex flex-col items-center justify-center min-h-screen w-2/6 mx-auto", className)} {...props}>
       <Card className="overflow-hidden w-full">
         <CardContent className="grid p-0 md:grid-cols-1">
-          <form className="p-6 md:p-8">
+          <form className="p-6 md:p-8" onSubmit={handleLogin}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">Welcome back</h1>
@@ -55,15 +57,7 @@ const Login = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
-                  <a
-                    href="#"
-                    className="ml-auto text-sm underline-offset-2 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
-                </div>
+                <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
                   type="password"
@@ -72,7 +66,15 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <Button type="submit" className="w-full" onClick={handleLogin}>
+              <div className="flex items-center justify-center">
+                <a
+                  href="#"
+                  className="text-sm underline-offset-2 hover:underline "
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Button type="submit" className="w-full">
                 Login
               </Button>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center ">

@@ -76,18 +76,26 @@ export const register = catchAsyncError(async (req, res, next) => {
 export const login = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
+    console.log("Email or password not provided");
     return next(new ErrorHandler("Email and password Are Required"));
   }
+  console.log("Attempting to find user with email:", email);
   const user = await User.findOne({ email }).select("+password");
   if (!user) {
+    console.log("User not found with email:", email);
     return next(new ErrorHandler("Invalid Email or password ", 400));
   }
+  console.log("User found:", user);
   const isPasswordMatched = await user.comparePassword(password);
   if (!isPasswordMatched) {
+    console.log("Password does not match for user:", email);
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
+  console.log("Password matched for user:", email);
   generateToken(user, "Login Successfully!", 200, res);
 });
+
+
 export const logout = catchAsyncError(async(req, res, next)=>
 {
   res.status(200).cookie("token", "",{
