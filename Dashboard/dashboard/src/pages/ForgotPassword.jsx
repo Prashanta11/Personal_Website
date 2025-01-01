@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { forgotPassword } from "@/store/slices/forgotResetPasswordSlice";
-import { clearAllUserErrors } from "@/store/slices/userSlice";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +24,7 @@ const ForgotPassword = () => {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch(clearAllUserErrors());
+      dispatch(clearAllForgotPasswordErrors());
     }
     if (isAuthenticated) {
       navigateTo("/");
