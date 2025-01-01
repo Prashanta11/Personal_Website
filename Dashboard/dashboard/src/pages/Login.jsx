@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"; // Assuming you are using react-toastify for toast notifications
+import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
 
 const Login = ({ className, ...props }) => {
   const [email, setEmail] = useState("");
@@ -74,9 +75,14 @@ const Login = ({ className, ...props }) => {
                   Forgot your password?
                 </a>
               </div>
-              <Button type="submit" className="w-full">
-                Login
-              </Button>
+              {
+                loading ? ( <SpecialLoadingButton content={"Logging In"}/>):
+                ( <Button type="submit" className="w-full" onClick={handleLogin} >
+                  Login
+                </Button>)
+              }
+
+             
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center ">
                 <span className="relative z-10 bg-background px-2 text-muted-foreground">
                   Or continue with
