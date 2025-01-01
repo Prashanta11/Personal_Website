@@ -30,6 +30,41 @@ export const userSlice = createSlice({
       state.user = {};
       state.error = action.payload;
     },
+
+    loadUserRequest(state, action) {
+      state.loading = true;
+      state.isAuthenticated = false;
+      state.user = {};
+      state.error = null;
+    },
+    loadUserSuccess(state, action) {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload;
+      state.error = null;
+    },
+    loadUserFailed(state, action) {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = {};
+      state.error = action.payload;
+    },
+
+    
+    logoutSuccess(state, action) {
+      state.loading = false;
+      state.isAuthenticated = false;
+      state.user = {};
+      state.error = null;
+      state.message = action.payload;
+    },
+    logoutFailed(state, action) {
+      state.loading = false;
+      state.isAuthenticated = state.isAuthenticated;
+      state.user = state.user;
+      state.error = action.payload;
+    },
+
     clearAllErrors(state, action) {
       state.error = null;
     },
@@ -47,10 +82,43 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userSlice.actions.loginSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-    // dispatch(userSlice.actions.loginFailed(error.response.data.message));
-    console.log("Error while logging in: ", error);
+     dispatch(userSlice.actions.loginFailed(error.response.data.message));
+   // console.log("Error while logging in: ", error);
   }
 };
+
+
+export const getUser = () => async (dispatch) => {
+  dispatch(userSlice.actions.loadUserRequest());
+  try {
+    const { data } = await axios.get(
+      "http://localhost:5000/api/v1/user/me",
+      { withCredentials: true }
+    );
+    dispatch(userSlice.actions.loadUserSuccess(data.user));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error) {
+     dispatch(userSlice.actions.loadUserFailed(error.response.data.message));
+   // console.log("Error while getting user: ", error);
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  
+  try {
+    const { data } = await axios.get(
+      "http://localhost:5000/api/v1/user/logout",
+      { withCredentials: true ,}
+    );
+    dispatch(userSlice.actions.logoutSuccess(data.message));
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error) {
+     dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+   // console.log("Error while getting logout: ", error);
+  }
+};
+
+
 
 export const clearAllUserErrors = () => (dispatch) => {
   dispatch(userSlice.actions.clearAllErrors());
