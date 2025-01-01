@@ -68,12 +68,12 @@ const Login = ({ className, ...props }) => {
                 />
               </div>
               <div className="flex items-center justify-center">
-                <a
-                  href="#"
+                <button
+                  onClick={() => navigateTo("/password/forgot")}
                   className="text-sm underline-offset-2 hover:underline "
                 >
                   Forgot your password?
-                </a>
+                </button>
               </div>
               {
                 loading ? ( <SpecialLoadingButton content={"Logging In"}/>):

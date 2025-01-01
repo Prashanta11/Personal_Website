@@ -32,7 +32,7 @@ const App = () => {
         <Route path="/manage/timeline" element ={<ManageTimeline/>}/>
         <Route path="/manage/projects" element ={<ManageProject/>}/>
         <Route path="/view/project/:id" element ={<ViewProject/>}/>
-        <Route path="/update/project/:id" element ={<UpdateProject/>}/>
+        <Route path="/update/project/:id" element ={<UpdateProject/>}/> 
 
       </Routes>
       <ToastContainer position="bottom-right" theme="dark"/>
