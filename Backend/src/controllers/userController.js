@@ -6,8 +6,30 @@ import { User } from "../models/userSchema.js";
 import { generateToken } from "../utils/jwtToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
 
+const validateEmail = (email) => {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase());
+};
+
+const validatePassword = (password) => {
+  // Minimum 8 characters, at least one letter, one number and one special character
+  const re = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  return re.test(password);
+};
+
+const validateURL = (url) => {
+  const re = /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/;
+  return re.test(url);
+};
+
+const validatePhoneNumber = (phone) => {
+  // Example regex for validating phone numbers (adjust as needed)
+  const re = /^\+?[1-9]\d{1,14}$/;
+  return re.test(phone);
+};
+
 export const register = catchAsyncError(async (req, res, next) => {
-  if (!req.files || Object.keys(req.files).length === 0) {
+  if (!req.files?.avatar ||! req.files?.resume || Object.keys(req.files).length === 0 ) {
     return next(new ErrorHandler("Avatar and  Resume Are Required", 400));
   }
   const { avatar } = req.files;
@@ -45,6 +67,36 @@ export const register = catchAsyncError(async (req, res, next) => {
     linkedinURL,
     instagramURL,
   } = req.body;
+
+  
+  // Validate email
+  if (!validateEmail(email)) {
+    return next(new ErrorHandler("Invalid email format", 400));
+  }
+
+  // Check if email already exists
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return next(new ErrorHandler("Email already in use", 400));
+  }
+  // Validate password
+  if (!validatePassword(password)) {
+    return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
+  }
+
+  // Validate URLs
+  const urls = [portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL];
+  for (const url of urls) {
+    if (url && !validateURL(url)) {
+      return next(new ErrorHandler("Invalid URL format", 400));
+    }
+  }
+  
+  // Validate phone number
+  if (!validatePhoneNumber(phone)) {
+    return next(new ErrorHandler("Invalid phone number format", 400));
+  }
+
 
   console.log(req.body);
   const user = await User.create({
@@ -127,6 +179,30 @@ export  const updateProfile = catchAsyncError(async(req,res,next)=>{
     linkedinURL : req.body.linkedinURL,
     instagramURL : req.body.instagramURL,
   };
+  const { email, password, portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL, phone } = req.body;
+  // Validate email
+  if (!validateEmail(email)) {
+    return next(new ErrorHandler("Invalid email format", 400));
+  }
+
+  // Validate password
+  if (!validatePassword(password)) {
+    return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
+  }
+
+  // Validate URLs
+  const urls = [portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL];
+  for (const url of urls) {
+    if (url && !validateURL(url)) {
+      return next(new ErrorHandler("Invalid URL format", 400));
+    }
+  }
+  
+  // Validate phone number
+  if (!validatePhoneNumber(phone)) {
+    return next(new ErrorHandler("Invalid phone number format", 400));
+  }
+
   if (req.files && req.files.avatar){
     const avatar = req.files.avatar;
     const user = await User.findById(req.user.id);
@@ -179,6 +255,12 @@ if (!isPasswordMatched){
 if(newPassword !== confirmNewPassword){
   return next(new ErrorHandler(" New Password didn't matched",400));
 
+}
+if (!validatePassword(newPassword)){
+  return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
+}
+if (currentPassword === newPassword){
+  return next(new ErrorHandler("Current Password and New Password are same",400));
 }
 user.password = newPassword;
 await user.save();
@@ -246,6 +328,11 @@ res.status(200).json({
   if(req.body.password !== req.body.confirmPassword){
     return next( new ErrorHandler(" Password and  Confirm Password do not match"));
   }
+    // Validate password
+    if (!validatePassword(req.body.password)) {
+      return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
+    }
+  
 
 existingUser.password = await req.body.password;
 existingUser.resetPasswordExpire  = undefined;
