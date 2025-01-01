@@ -17,8 +17,8 @@ const ResetPassword = () => {
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
 
-  const handleResetPassword = (email) => {
-    dispatch(resetPassword(token,password,confirmPassword));
+  const handleResetPassword = (password, confirmPassword) => {
+    dispatch(resetPassword(token, password, confirmPassword));
   };
 
     useEffect(() => {
@@ -59,6 +59,17 @@ const ResetPassword = () => {
               />
             </div>
             <div className="grid gap-2">
+              <Label>Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+    
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="grid gap-2">
               <div className="flex items-center">
                 <Link
                   to="/login"
@@ -70,7 +81,7 @@ const ResetPassword = () => {
             </div>
             {!loading ? (
               <Button
-                onClick={() => handleResetPassword(email)}
+                onClick={() => handleResetPassword(password, confirmPassword)}
                 className="w-full"
               >
                 Reset Password
