@@ -1,8 +1,33 @@
+import { Button } from '@/components/ui/button';
+import { clearAllUserErrors, logout } from '@/store/slices/userSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const { message, error } = useSelector(state => state.user);
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch(clearAllUserErrors());
+    }
+
+    if (message) {
+      toast.success(message);
+    }
+  }, [message, dispatch, error]);
+
   return (
-    <div>homePage</div>
-  )
-}
+    <>
+      <Button onClick={handleLogout}>Logout</Button>
+    </>
+  );
+};
 
 export default HomePage;
