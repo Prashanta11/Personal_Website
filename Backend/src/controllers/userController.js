@@ -85,7 +85,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     console.log("User not found with email:", email);
     return next(new ErrorHandler("Invalid Email or password ", 400));
   }
-  console.log("User found:", user);
+  //console.log("User found:", user);
   const isPasswordMatched = await user.comparePassword(password);
   if (!isPasswordMatched) {
     console.log("Password does not match for user:", email);

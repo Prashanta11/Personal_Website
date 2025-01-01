@@ -205,6 +205,7 @@ export const updateProfile = ( data) => async (dispatch) => {
   }
 };
 
+
 export const resetProfile = () => (dispatch) => {
   dispatch(userSlice.actions.updateProfileResetAfterUpdate());
 };
