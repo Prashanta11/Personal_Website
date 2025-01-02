@@ -18,6 +18,12 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Account from "./sub-components/Account";
+import AddProject from "./sub-components/AddProject";
+import AddSkill from "./sub-components/AddSkill";
+import AddTimeline from "./sub-components/AddTimeline";
+import Dashboard from "./sub-components/Dashboard";
+import Messages from "./sub-components/Messages";
 
 const HomePage = () => {
   const [active, setActive] = useState("");
@@ -303,6 +309,37 @@ const HomePage = () => {
                   </div>
 
         </header>
+        {
+          (()=>{
+               switch (active) {
+          case "Dashboard":
+            return <Dashboard />;
+            break;
+          case "Add Project":
+            return <AddProject />;
+            break;;
+          case "Add Skill":
+            return <AddSkill />;
+            break;
+          case "Add Uses":
+            return <AddSoftwareApplication />;
+            break;
+          case "Add Timeline":
+            return <AddTimeline />;
+            break;
+          case "Messages":
+            return <Messages />;
+            break;
+          case "Account":
+            return <Account/>;
+            break;
+          default:
+            return <Dashboard />;
+            break;
+      
+            }
+          })()
+        }
       </div>
     </>
   );
