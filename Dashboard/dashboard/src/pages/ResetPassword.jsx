@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { resetPassword } from "@/store/slices/forgotResetPasswordSlice";
+import { getUser } from "@/store/slices/userSlice";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import SpecialLoadingButton from "./sub-components/SpecialLoadingButton";
+
+
 const ResetPassword = () => {
   const{token}=useParams()
   const [password, setPassword] = useState("");
@@ -31,6 +34,7 @@ const ResetPassword = () => {
       }
       if (message !== null) {
         toast.success(message);
+        dispatch(getUser());
       }
     }, [dispatch, isAuthenticated, error, message,loading]);
   
