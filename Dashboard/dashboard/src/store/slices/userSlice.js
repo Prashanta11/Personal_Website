@@ -95,7 +95,8 @@ export const userSlice = createSlice({
     updateProfileSuccess(state, action) {
       state.loading = false;
       state.isUpdated = true;
-      state.message = action.payload;
+      state.user = action.payload.user;
+      state.message = action.payload.message;
       state.error = null;
     },
   
@@ -185,13 +186,13 @@ export const updatePassword = ( currentPassword, newPassword , confirmNewPasswor
   }
 };
 
-export const updateProfile = ( data) => async (dispatch) => {
+export const updateProfile = ( formData) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
 
   try {
     const { data } = await axios.put(
       "http://localhost:5000/api/v1/user/update/me",
-      data,
+      formData,
       {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
