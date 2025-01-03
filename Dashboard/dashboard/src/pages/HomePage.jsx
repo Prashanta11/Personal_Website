@@ -38,7 +38,7 @@ import Dashboard from "./sub-components/Dashboard";
 import Messages from "./sub-components/Messages";
 
 const HomePage = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Dashboard");
   const { isAuthenticated, error, user } = useSelector((state) => state.user); // Access error from Redux state
   const dispatch = useDispatch();
   const navigateTo = useNavigate();
