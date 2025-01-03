@@ -14,7 +14,6 @@ import ResetPassword from "./pages/ResetPassword";
 import UpdateProject from "./pages/UpdateProject";
 import ViewProject from "./pages/ViewProject";
 import { getUser } from "./store/slices/userSlice";
-
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
