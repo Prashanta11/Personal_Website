@@ -179,16 +179,13 @@ export  const updateProfile = catchAsyncError(async(req,res,next)=>{
     linkedinURL : req.body.linkedinURL,
     instagramURL : req.body.instagramURL,
   };
-  const { email, password, portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL, phone } = req.body;
+  const { email, portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL, phone } = req.body;
   // Validate email
   if (!validateEmail(email)) {
     return next(new ErrorHandler("Invalid email format", 400));
   }
 
-  // Validate password
-  if (!validatePassword(password)) {
-    return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
-  }
+
 
   // Validate URLs
   const urls = [portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL];
