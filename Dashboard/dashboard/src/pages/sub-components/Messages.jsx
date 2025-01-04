@@ -20,10 +20,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SpecialLoadingButton from "./SpecialLoadingButton";
 
-const Messages = () => {
+const Messages = ({setActiveTab}) => {
   const navigateTo = useNavigate();
   const handleReturnToDashboard = () => {
-    navigateTo("/");
+    setActiveTab("Dashboard");
   };
 
   const { messages, loading, error, message } = useSelector(
@@ -37,11 +37,12 @@ const Messages = () => {
   };
 
   const dispatch = useDispatch();
-
+  
+  useEffect(() => {
+    dispatch(getAllMessages()); // Ensure messages are fetched when the component mounts
+  }, [dispatch]);
 
   useEffect(() => {
-    
-    
     if (error) {
       toast.error(error);
       dispatch(clearAllMessageErrors());
@@ -69,7 +70,7 @@ const Messages = () => {
                 {messages && messages.length > 0 ? (
                   messages.map((element) => {
                     return (
-                      <Card key={element._id} className="grid gap-2">
+                      <Card key={element._id} className="grid gap-2 p-2">
                         <CardDescription className="text-white">
                           <span className="font-bold mr-2">Sender Name:</span>
                           {element.senderName}

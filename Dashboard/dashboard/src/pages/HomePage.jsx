@@ -378,7 +378,7 @@ const HomePage = () => {
               return <AddTimeline />;
               break;
             case "Messages":
-              return <Messages />;
+              return <Messages setActiveTab={setActive} />;
               break;
             case "Account":
               return <Account />;
