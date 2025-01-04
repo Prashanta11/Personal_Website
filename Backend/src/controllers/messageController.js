@@ -30,7 +30,7 @@ if(!message){
 }
 await message.deleteOne();
 res.status(200).json({
-    success:True,
+    success:true,
     message: "Message Deleted",
 });
 });
