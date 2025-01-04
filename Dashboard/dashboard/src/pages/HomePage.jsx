@@ -61,10 +61,10 @@ const HomePage = () => {
   return (
     <>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
-        <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
-          <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
+        <aside className="fixed inset-y-0 left-0 hidden w-24 flex-col border-r  bg-background sm:flex z-50">
+          <nav className="flex flex-col items-center gap-6 px-2 sm:py-5">
           <Link className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base">
-            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
+            <Package2 className="size-6 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
             </Link>
             
@@ -79,11 +79,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Dashboard")}
                   >
-                    <Home className="w-5 h-5 " />
+                    <Home className="size-7 " />
                     <span className=" sr-only">Dashboard</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Dashboard</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Dashboard</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -99,11 +99,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Add Project")}
                   >
-                    <FolderGit className="w-5 h-5 " />
+                    <FolderGit className="size-7 " />
                     <span className=" sr-only">Add Project</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Add Project</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Project</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -118,11 +118,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Add Skill")}
                   >
-                    <PencilRuler className="w-5 h-5 " />
+                    <PencilRuler className="size-7 " />
                     <span className=" sr-only">Add Skill</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Add Skill</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Skill</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -137,11 +137,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Add Application")}
                   >
-                    <LayoutGrid className="w-5 h-5 " />
+                    <LayoutGrid className="size-7 " />
                     <span className=" sr-only">Add Application</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Add Application</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Application</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -156,11 +156,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Add Timeline")}
                   >
-                    <History className="w-5 h-5 " />
+                    <History className="size-7 " />
                     <span className=" sr-only">Add Timeline</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Add Timeline</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Timeline</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -175,11 +175,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Messages")}
                   >
-                    <MessageSquareMore className="w-5 h-5 " />
+                    <MessageSquareMore className="size-7 " />
                     <span className=" sr-only">Messages</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Messages</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Messages</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -194,11 +194,11 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={() => setActive("Account")}
                   >
-                    <User className="w-5 h-5 " />
+                    <User className="size-7 " />
                     <span className=" sr-only">Account</span>
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent side="right">Account</TooltipContent>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Account</TooltipContent>
               </Tooltip>
             </TooltipProvider>
           </nav>
@@ -214,7 +214,7 @@ const HomePage = () => {
                     } transition-colors hover:text-foreground md:h-8 md:w-8`}
                     onClick={handleLogout}
                   >
-                    <LogOut className="w-5 h-5 " />
+                    <LogOut className="size-7 " />
                     <span className=" sr-only">Logout</span>
                   </Link>
                 </TooltipTrigger>
@@ -224,7 +224,7 @@ const HomePage = () => {
           </nav>
         </aside>
 
-        <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 max-[900px]:h-[100px] ">
+        <header className="sticky top-0 z-30 flex h-14  items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-16 max-[900px]:h-[100px] ">
           <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant="outline" className="sm:hidden">
@@ -255,7 +255,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Dashboard")}
                 >
-                  <Home className="w-5 h-5" />
+                  <Home className="size-7" />
                   Dashboard
                 </Link>
 
@@ -268,7 +268,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Add Project")}
                 >
-                  <FolderGit className="w-5 h-5" />
+                  <FolderGit className="size-7" />
                   Add Project
                 </Link>
 
@@ -281,7 +281,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Add Skill")}
                 >
-                  <PencilRuler className="w-5 h-5" />
+                  <PencilRuler className="size-7" />
                   Add Skill
                 </Link>
 
@@ -294,7 +294,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Add Application")}
                 >
-                  <LayoutGrid className="w-5 h-5" />
+                  <LayoutGrid className="size-7" />
                   Add Application
                 </Link>
 
@@ -307,7 +307,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Account")}
                 >
-                  <User className="w-5 h-5" />
+                  <User className="size-7" />
                   Account
                 </Link>
 
@@ -320,7 +320,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Add Timeline")}
                 >
-                  <History className="w-5 h-5" />
+                  <History className="size-7" />
                   Add Timeline
                 </Link>
 
@@ -333,7 +333,7 @@ const HomePage = () => {
                   } `}
                   onClick={() => setActive("Messages")}
                 >
-                  <MessageSquareMore className="w-5 h-5" />
+                  <MessageSquareMore className="size-7" />
                   Messages
                 </Link>
 
@@ -342,7 +342,7 @@ const HomePage = () => {
                   text-muted-foreground`}
                   onClick={handleLogout}
                 >
-                  <LogOut className="w-5 h-5" />
+                  <LogOut className="size-7" />
                   Logout
                 </Link>
               </nav>
@@ -360,6 +360,7 @@ const HomePage = () => {
             </h1>
           </div>
         </header>
+        <div className="px-16">
         {(() => {
           switch (active) {
             case "Dashboard":
@@ -387,7 +388,7 @@ const HomePage = () => {
               return <Dashboard />;
               break;
           }
-        })()}
+        })()}</div>
       </div>
     </>
   );
