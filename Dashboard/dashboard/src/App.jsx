@@ -13,11 +13,24 @@ import ManageTimeline from "./pages/ManageTimeline";
 import ResetPassword from "./pages/ResetPassword";
 import UpdateProject from "./pages/UpdateProject";
 import ViewProject from "./pages/ViewProject";
+import { getAllMessages } from "./store/slices/messageSlice";
+import { getAllProjects } from "./store/slices/projectSlice";
+import { getAllSkills } from "./store/slices/skillSlice";
+import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
+import { getAllTimeline } from "./store/slices/timelineSlice";
 import { getUser } from "./store/slices/userSlice";
+
 const App = () => {
   const dispatch = useDispatch();
+
+
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getAllMessages());
+    dispatch(getAllTimeline());
+    dispatch(getAllSkills());
+    dispatch(getAllSoftwareApplications());
+    dispatch(getAllProjects());
   },[]);
 
   return (

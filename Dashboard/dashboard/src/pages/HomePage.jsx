@@ -224,7 +224,7 @@ const HomePage = () => {
           </nav>
         </aside>
 
-        <header className="sticky top-0 z-30 flex h-14  items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-16 max-[900px]:h-[100px] ">
+        <header className="sticky top-0 z-30 flex h-14  items-center gap-4 border-b bg-[#242424] px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-16 max-[900px]:h-[100px] ">
           <Sheet>
             <SheetTrigger asChild>
               <Button size="icon" variant="outline" className="sm:hidden">
@@ -236,7 +236,7 @@ const HomePage = () => {
             <SheetContent side="left" className="sm:max-w-xs">
               <SheetTitle></SheetTitle>
               <SheetDescription></SheetDescription>
-              <nav className="grip gap-6 text-lg  font-medium">
+              <nav className="grid gap-6 text-lg  font-medium">
                     
               <Link
                 className={`group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base`}
