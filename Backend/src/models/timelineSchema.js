@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const timelineSchema = new mongoose.Schema({
-    timeline: {
+    title: {
         type:String,
         required: [true, " Title Required!"],
     },
