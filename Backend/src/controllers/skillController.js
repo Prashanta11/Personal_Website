@@ -10,8 +10,8 @@ export const addNewSkill = catchAsyncError(async(req, res, next)=>{
         );
       }
       const { svg } = req.files;
-      const { title, Proficiency } = req.body;
-      if (!title || !Proficiency){
+      const { title, proficiency } = req.body;
+      if (!title || !proficiency){
         return next(new ErrorHandler("Please fill full form"));
     }
    
@@ -27,7 +27,7 @@ export const addNewSkill = catchAsyncError(async(req, res, next)=>{
       }
       const skill = await Skill.create({
         title,
-        Proficiency,
+        proficiency,
         svg: {
             public_id: cloudinaryResponse.public_id,
             url: cloudinaryResponse.secure_url,
@@ -58,10 +58,10 @@ export const deleteSkill = catchAsyncError(async(req, res, next)=>{
 export const  updateSkill = catchAsyncError(async(req, res, next)=>{
     const {id} =req.params;
 
-    const {Proficiency}=req.body;
+    const {proficiency}=req.body;
     const skill = await Skill.findByIdAndUpdate(
         id,
-        {Proficiency},
+        {proficiency},
     {
         new: true,
         runValidators: true,
