@@ -124,7 +124,7 @@ const UpdateProfile = () => {
                     <input
                       type="file"
                       onChange={avatarHandler}
-                      className="avatar-update-btn"
+                      className="avatar-update-btn "
                     />
                   </div>
                 </div>
@@ -240,9 +240,9 @@ const UpdateProfile = () => {
                 />
               </div>
               {!loading ? (
-                <Button
+                <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={() => handleUpdateProfile()}
-                  className="w-full"
+                  
                 >
                   Update Profile
                 </Button>

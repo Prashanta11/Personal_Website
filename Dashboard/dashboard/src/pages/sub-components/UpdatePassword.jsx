@@ -73,9 +73,9 @@ const Profile = () => {
                 />
               </div>
               {!loading ? (
-                <Button
+                <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                   onClick={() => handleUpdatePassword()}
-                  className="w-full"
+              
                 >
                   Update Password
                 </Button>
