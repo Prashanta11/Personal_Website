@@ -32,15 +32,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SpecialLoadingButton from "./SpecialLoadingButton";
+
+
 const Dashboard = () => {
   const navigateTo = useNavigate();
-  const gotoMangeSkills = () => {
+  const gotoManageSkills = () => {
     navigateTo("/manage/skills");
   };
-  const gotoMangeTimeline = () => {
+  const gotoManageTimeline = () => {
     navigateTo("/manage/timeline");
   };
-  const gotoMangeProjects = () => {
+  const gotoManageProjects = () => {
     navigateTo("/manage/projects");
   };
 
@@ -51,6 +53,7 @@ const Dashboard = () => {
     error: skillError,
     message: skillMessage,
   } = useSelector((state) => state.skill);
+
   const {
     softwareApplications,
     loading: appLoading,
@@ -123,7 +126,7 @@ const Dashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Button>Visit Portfolio</Button>
+                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Visit Portfolio</Button>
                 </CardFooter>
               </Card>
               <Card className="flex flex-col justify-center">
@@ -134,9 +137,10 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardFooter>
-                  <Button onClick={gotoMangeProjects}>Manage Projects</Button>
+                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageProjects}>Manage Projects</Button>
                 </CardFooter>
               </Card>
+
               <Card className="flex flex-col justify-center">
                 <CardHeader className="pb-2">
                   <CardTitle>Skills</CardTitle>
@@ -145,13 +149,15 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardFooter>
-                  <Button onClick={gotoMangeSkills}>Manage Skill</Button>
+                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageSkills}>Manage Skill</Button>
                 </CardFooter>
               </Card>
+
             </div>
             <Tabs>
               <TabsContent>
                 <Card>
+
                   <CardHeader className="px-7">
                     <CardTitle>Projects</CardTitle>
                   </CardHeader>
@@ -166,10 +172,13 @@ const Dashboard = () => {
                           <TableHead className="hidden md:table-cell">
                             Deployed
                           </TableHead>
-                          <TableHead className="md:table-cell">
-                            Update
+                          <TableHead className="md:table-cell ">
+                            <span className="pl-4">
+                            Update</span>
                           </TableHead>
-                          <TableHead className="text-right">Visit</TableHead>
+                          <TableHead className="text-right">
+                            <span className="pr-4">Visit</span>
+                          </TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -195,7 +204,7 @@ const Dashboard = () => {
                                 </TableCell>
                                 <TableCell className="md:table-cell">
                                   <Link to={`/update/project/${element._id}`}>
-                                    <Button>Update</Button>
+                                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update</Button>
                                   </Link>
                                 </TableCell>
                                 <TableCell className="text-right">
@@ -203,7 +212,7 @@ const Dashboard = () => {
                                     to={element.projectLink}
                                     target="_blank"
                                   >
-                                    <Button>Visit</Button>
+                                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Visit</Button>
                                   </Link>
                                 </TableCell>
                               </TableRow>
@@ -222,6 +231,7 @@ const Dashboard = () => {
                 </Card>
               </TabsContent>
             </Tabs>
+
             <Tabs>
               <TabsContent>
                 <Card>
@@ -231,11 +241,13 @@ const Dashboard = () => {
                   <CardContent className="grid sm:grid-cols-2 gap-4">
                     {skills && skills.length > 0 ? (
                       skills.map((element) => {
+                        console.log(element);
                         return (
                           <Card key={element._id}>
                             <CardHeader>{element.title}</CardHeader>
                             <CardFooter>
-                              <Progress value={element.proficiency} />
+                              <Progress className="bg-white"  value={element.proficiency} />
+                         
                             </CardFooter>
                           </Card>
                         );
@@ -247,6 +259,7 @@ const Dashboard = () => {
                 </Card>
               </TabsContent>
             </Tabs>
+
             <Tabs>
               <TabsContent className="grid min-[1050px]:grid-cols-2 gap-4">
                 <Card>
@@ -287,7 +300,7 @@ const Dashboard = () => {
                                       width={"w-fit"}
                                     />
                                   ) : (
-                                    <Button
+                                    <Button className=" hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                                       onClick={() =>
                                         handleDeleteSoftwareApp(element._id)
                                       }
@@ -313,7 +326,7 @@ const Dashboard = () => {
                 <Card>
                   <CardHeader className="px-7 flex items-center justify-between flex-row">
                     <CardTitle>Timeline</CardTitle>
-                    <Button onClick={gotoMangeTimeline} className="w-fit">
+                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageTimeline} >
                       Manage Timeline
                     </Button>
                   </CardHeader>
@@ -322,6 +335,7 @@ const Dashboard = () => {
                       <TableHeader>
                         <TableRow>
                           <TableHead>Title</TableHead>
+                          <TableHead>Description</TableHead>
                           <TableHead className="md:table-cell">From</TableHead>
                           <TableHead className="md:table-cell text-right">
                             To
@@ -335,6 +349,9 @@ const Dashboard = () => {
                               <TableRow className="bg-accent" key={element._id}>
                                 <TableCell className="font-medium">
                                   {element.title}
+                                </TableCell>
+                                <TableCell className="font-medium">
+                                  {element.description}
                                 </TableCell>
                                 <TableCell className="md:table-cell">
                                   {element.timeline.from}
