@@ -30,6 +30,7 @@ const ManageTimeline = () => {
     (state) => state.timeline
   );
   const dispatch = useDispatch();
+ console.log(timeline);
 
   const handleDeleteTimeline = (id) => {
     dispatch(deleteTimeline(id));

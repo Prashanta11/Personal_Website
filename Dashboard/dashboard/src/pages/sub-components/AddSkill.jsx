@@ -31,7 +31,7 @@ const AddSkill = () => {
   const handleAddNewSkill = (e) => {
     const formData = new FormData();
     formData.append("title", title);
-    formData.append("Proficiency", proficiency);
+    formData.append("proficiency", proficiency);
     formData.append("svg", svg);
     dispatch(addNewSkill(formData));
   };
@@ -126,9 +126,9 @@ const AddSkill = () => {
                       <div className="mt-4 flex text-sm leading-6 text-white">
                         <label
                           htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          className="relative cursor-pointer rounded-md  font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
-                          <span>Upload a file</span>
+                          <span className="text-xl">Upload a file</span>
                           <input 
                             id="file-upload"
                             name="file-upload"
@@ -154,7 +154,7 @@ const AddSkill = () => {
               <Button
                 type="submit"
                 onClick={() => handleAddNewSkill()}
-                className="w-full"
+                className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Add Skill
               </Button>

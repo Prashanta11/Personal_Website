@@ -116,7 +116,7 @@ const AddSoftwareApplications = () => {
                       <div className="mt-4 flex text-sm leading-6 text-gray-600">
                         <label
                           htmlFor="file-upload"
-                          className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                          className="relative cursor-pointer rounded-md text-xl font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
@@ -127,9 +127,9 @@ const AddSoftwareApplications = () => {
                             onChange={handleSvg}
                           />
                         </label>
-                        <p className="pl-1">or drag and drop</p>
+                        <p className="pl-1 text-white">or drag and drop</p>
                       </div>
-                      <p className="text-xs leading-5 text-gray-600">
+                      <p className="text-xs leading-5 text-white">
                         PNG, JPG, GIF up to 10MB
                       </p>
                     </div>

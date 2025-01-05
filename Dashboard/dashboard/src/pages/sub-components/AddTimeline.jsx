@@ -29,6 +29,7 @@ const AddTimeline = () => {
     formData.append("to", to);
     dispatch(addNewTimeline(formData));
   };
+  console.log(title, description, from, to);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -127,7 +128,7 @@ const AddTimeline = () => {
             {!loading ? (
               <Button
                 type="submit"
-                onClick={() => handleAddNewSkill()}
+               
                 className="w-full"
               >
                 Add Timeline
