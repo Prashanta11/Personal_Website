@@ -90,7 +90,9 @@ export const getAllSkills = () => async (dispatch) => {
       "http://localhost:5000/api/v1/skill/getall",
       { withCredentials: true }
     );
-    dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
+    
+    dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skill));
+    console.log(response.data.skill);
     dispatch(skillSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
@@ -110,7 +112,7 @@ export const addNewSkill = (data) => async (dispatch) => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(response);
+  
     console.log(response.data.message);
     dispatch(skillSlice.actions.addNewSkillSuccess(response.data.message));
     dispatch(skillSlice.actions.clearAllErrors());
@@ -119,12 +121,12 @@ export const addNewSkill = (data) => async (dispatch) => {
   }
 };
 
-export const updateSkill = (id, proficiency) => async (dispatch) => {
+export const updateSkill = (id, Proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
       `http://localhost:5000/api/v1/skill/update/${id}`,
-      { proficiency },
+      { Proficiency },
       {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },

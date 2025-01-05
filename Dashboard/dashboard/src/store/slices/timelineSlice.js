@@ -76,8 +76,10 @@ export const getAllTimeline = () => async (dispatch) => {
       { withCredentials: true }
     );
     dispatch(
-      timelineSlice.actions.getAllTimelineSuccess(response.data.timelines)
+      timelineSlice.actions.getAllTimelineSuccess(response.data.timeline)
+  
     );
+    console.log(response.data.timeline)
     dispatch(timelineSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
@@ -111,7 +113,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/timeline/delete//${id}`,
+      `http://localhost:5000/api/v1/timeline/delete/${id}`,
       {
         withCredentials: true,
       }
