@@ -32,7 +32,7 @@ const App = () => {
     dispatch(getAllSoftwareApplications());
     dispatch(getAllProjects());
   },[]);
-
+  
   return (
     <Router>
       <Routes>
