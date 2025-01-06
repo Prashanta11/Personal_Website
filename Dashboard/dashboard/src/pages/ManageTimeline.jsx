@@ -55,7 +55,7 @@ const ManageTimeline = () => {
           <Card>
             <CardHeader className="flex gap-4 sm:justify-between sm:flex-row sm:items-center">
               <CardTitle>Manage Your Timeline</CardTitle>
-              <Button className="w-fit" onClick={handleReturnToDashboard}>
+              <Button  className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={handleReturnToDashboard}>
                 Return to Dashboard
               </Button>
             </CardHeader>
