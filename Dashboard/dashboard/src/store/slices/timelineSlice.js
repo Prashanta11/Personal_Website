@@ -79,7 +79,7 @@ export const getAllTimeline = () => async (dispatch) => {
       timelineSlice.actions.getAllTimelineSuccess(response.data.timeline)
   
     );
-    console.log(response.data.timeline)
+   
     dispatch(timelineSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
