@@ -79,7 +79,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
     );
     dispatch(
       softwareApplicationSlice.actions.getAllsoftwareApplicationsSuccess(
-        response.data.softwareApplications
+        response.data.SoftwareApplication
       )
     );
     dispatch(softwareApplicationSlice.actions.clearAllErrors());
