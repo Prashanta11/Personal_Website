@@ -60,6 +60,7 @@ const Dashboard = () => {
     error: appError,
     message: appMessage,
   } = useSelector((state) => state.softwareApplications);
+  console.log(softwareApplications)
   const {
     timeline,
     loading: timelineLoading,
@@ -241,7 +242,6 @@ const Dashboard = () => {
                   <CardContent className="grid sm:grid-cols-2 gap-4">
                     {skills && skills.length > 0 ? (
                       skills.map((element) => {
-                        console.log(element);
                         return (
                           <Card key={element._id}>
                             <CardHeader>{element.title}</CardHeader>
@@ -281,6 +281,7 @@ const Dashboard = () => {
                         {softwareApplications &&
                         softwareApplications.length > 0 ? (
                           softwareApplications.map((element) => {
+                            // console.log(element, "element");
                             return (
                               <TableRow className="bg-accent" key={element._id}>
                                 <TableCell className="font-medium">
