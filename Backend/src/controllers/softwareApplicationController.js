@@ -57,6 +57,6 @@ export const getAllApplication = catchAsyncError(async (req, res, next) => {
       const SoftwareApplication = await softwareApplication.find();
       res.status(200).json({
           success: true,
-          softwareApplication,
+          SoftwareApplication,
       });
 });
