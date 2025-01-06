@@ -36,14 +36,14 @@ import SpecialLoadingButton from "./SpecialLoadingButton";
 
 const Dashboard = () => {
   const navigateTo = useNavigate();
-  const gotoManageSkills = () => {
-    navigateTo("/manage/skills");
+  const gotoManageSkill = () => {
+    navigateTo("/manage/skill");
   };
   const gotoManageTimeline = () => {
     navigateTo("/manage/timeline");
   };
   const gotoManageProjects = () => {
-    navigateTo("/manage/projects");
+    navigateTo("/manage/project");
   };
 
   const { user } = useSelector((state) => state.user);
@@ -149,7 +149,7 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardFooter>
-                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageSkills}>Manage Skill</Button>
+                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageSkill}>Manage Skill</Button>
                 </CardFooter>
               </Card>
 
@@ -315,7 +315,7 @@ const Dashboard = () => {
                         ) : (
                           <TableRow>
                             <TableCell className="text-3xl overflow-y-hidden">
-                              You have not added any skill.
+                              You have not added any Applications.
                             </TableCell>
                           </TableRow>
                         )}
