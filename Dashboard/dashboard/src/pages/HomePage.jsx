@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import {
+  BriefcaseBusiness,
   FolderGit,
   History,
   Home,
@@ -31,6 +32,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Account from "./sub-components/Account";
 import AddApplication from "./sub-components/AddApplication";
+import AddExperience from "./sub-components/AddExperience";
 import AddProject from "./sub-components/AddProject";
 import AddSkill from "./sub-components/AddSkill";
 import AddTimeline from "./sub-components/AddTimeline";
@@ -161,6 +163,25 @@ const HomePage = () => {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Timeline</TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            {/* iuyuiyiu */}
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    className={`flex h-9 w-9 items-center justify-center rounded-lg ${
+                      active === "Add Experience"
+                        ? "text-accent-foreground bg-accent"
+                        : "text-muted-foreground"
+                    } transition-colors hover:text-foreground md:h-8 md:w-8`}
+                    onClick={() => setActive("Add Experience")}
+                  >
+                    <BriefcaseBusiness className="size-7 " />
+                    <span className=" sr-only">Add Experience</span>
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="right" className="bg-black ml-2 rounded-full px-2 py-1">Add Experience</TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
@@ -377,6 +398,9 @@ const HomePage = () => {
               break;
             case "Add Timeline":
               return <AddTimeline />;
+              break;
+            case "Add Experience":
+              return <AddExperience />;
               break;
             case "Messages":
               return <Messages setActiveTab={setActive} />;

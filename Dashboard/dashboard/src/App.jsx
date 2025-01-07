@@ -7,12 +7,14 @@ import "./App.css";
 import ForgotPassword from "./pages/ForgotPassword";
 import HomePage from './pages/HomePage';
 import Login from "./pages/Login";
+import ManageExperience from "./pages/ManageExperience";
 import ManageProject from "./pages/ManageProject";
 import ManageSkill from "./pages/ManageSkill";
 import ManageTimeline from "./pages/ManageTimeline";
 import ResetPassword from "./pages/ResetPassword";
 import UpdateProject from "./pages/UpdateProject";
 import ViewProject from "./pages/ViewProject";
+import { getAllExperience } from "./store/slices/experienceSlice";
 import { getAllMessages } from "./store/slices/messageSlice";
 import { getAllProjects } from "./store/slices/projectSlice";
 import { getAllSkills } from "./store/slices/skillSlice";
@@ -31,6 +33,7 @@ const App = () => {
     dispatch(getAllSkills());
     dispatch(getAllSoftwareApplications());
     dispatch(getAllProjects());
+    dispatch(getAllExperience());
   },[]);
   
   return (
@@ -42,6 +45,7 @@ const App = () => {
         <Route path="/password/reset/:token" element ={<ResetPassword/>}/>
         <Route path="/manage/skill" element ={<ManageSkill/>}/>
         <Route path="/manage/timeline" element ={<ManageTimeline/>}/>
+        <Route path="/manage/experience" element ={<ManageExperience/>}/>
         <Route path="/manage/projects" element ={<ManageProject/>}/>
         <Route path="/view/project/:id" element ={<ViewProject/>}/>
         <Route path="/update/project/:id" element ={<UpdateProject/>}/> 
