@@ -42,6 +42,9 @@ const Dashboard = () => {
   const gotoManageTimeline = () => {
     navigateTo("/manage/timeline");
   };
+  const gotoManageExperience = () => {
+    navigateTo("/manage/experience");
+  };
   const gotoManageProjects = () => {
     navigateTo("/manage/project");
   };
@@ -67,6 +70,15 @@ const Dashboard = () => {
     error: timelineError,
     message: timelineMessage,
   } = useSelector((state) => state.timeline);
+
+  const {
+    experience,
+    loading: experienceLoading,
+    error: experienceError,
+    message: experienceMessage,
+  } = useSelector((state) => state.experience);
+
+
   const { projects, error: projectError } = useSelector(
     (state) => state.project
   );
@@ -317,6 +329,57 @@ const Dashboard = () => {
                           <TableRow>
                             <TableCell className="text-3xl overflow-y-hidden">
                               You have not added any Applications.
+                            </TableCell>
+                          </TableRow>
+                        )}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader className="px-7 flex items-center justify-between flex-row">
+                    <CardTitle>Experience</CardTitle>
+                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageExperience} >
+                      Manage Experience
+                    </Button>
+                  </CardHeader>
+                  <CardContent>
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Title</TableHead>
+                          <TableHead>Description</TableHead>
+                          <TableHead className="md:table-cell">From</TableHead>
+                          <TableHead className="md:table-cell text-right">
+                            To
+                          </TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {experience && experience.length > 0 ? (
+                          experience.map((element) => {
+                            return (
+                              <TableRow className="bg-accent" key={element._id}>
+                                <TableCell className="font-medium">
+                                  {element.title}
+                                </TableCell>
+                                <TableCell className="font-medium">
+                                  {element.description}
+                                </TableCell>
+                                <TableCell className="md:table-cell">
+                                  {element.date.from}
+                                </TableCell>
+                                <TableCell className="md:table-cell  text-right">
+                                  {element.date.to}
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })
+                        ) : (
+                          <TableRow>
+                            <TableCell className="text-3xl overflow-y-hidden">
+                              You have not added any experience.
                             </TableCell>
                           </TableRow>
                         )}

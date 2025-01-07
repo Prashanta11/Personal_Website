@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import experienceReducer from './slices/experienceSlice';
 import forgotPasswordReducer from './slices/forgotResetPasswordSlice';
 import messageSliceReducer from './slices/messageSlice';
 import projectReducer from './slices/projectSlice';
@@ -16,6 +17,7 @@ const store = configureStore({
     skill: skillSliceReducer,
     softwareApplications:SoftwareApplicationReducer,
     project: projectReducer,
+    experience:experienceReducer,
   },
 });
 
