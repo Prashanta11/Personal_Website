@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import fileUpload from "express-fileupload";
 import { errorMiddleware } from "./middlewares/error.js";
+import experienceRouter from "./routes/experienceRoutes.js";
 import messageRoutes from "./routes/messageRoutes.js";
 import projectRouter from "./routes/projectRoutes.js";
 import skillRouter from "./routes/skillRoutes.js";
@@ -32,6 +33,7 @@ app.use(fileUpload({
 app.use("/api/v1/message", messageRoutes);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
+app.use("/api/v1/experience", experienceRouter);
 app.use("/api/v1/softwareApplication", applicationRouter);
 app.use("/api/v1/skill",skillRouter );
 app.use("/api/v1/project",projectRouter );
