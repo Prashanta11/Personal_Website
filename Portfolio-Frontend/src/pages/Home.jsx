@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import logo from '../assets/logo.png';
+import background from '../assets/background.png';
 
 const Home = () => {
   return (
@@ -29,10 +29,10 @@ const Home = () => {
         <div className="flex-1 mt-10 md:mt-0">
           <div className="relative">
             {/* Background Shape */}
-            <div className="absolute inset-0 bg-blue-800 rounded-full transform scale-125 blur-3xl opacity-30"></div>
+            <div className="absolute inset-0 bg-black rounded-full transform scale-125 blur-3xl opacity-30"></div>
             {/* Main Image */}
             <img
-              src={logo} //  image path
+              src={background} //  image path
               alt="Prashanta"
               className="w-full max-w-md mx-auto md:max-w-sm rounded-lg "
             />
