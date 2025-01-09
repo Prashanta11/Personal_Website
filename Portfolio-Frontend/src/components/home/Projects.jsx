@@ -3,8 +3,8 @@ import { ExternalLinkIcon } from "lucide-react";
 const Projects = () => {
   return (
     <div className="mx-10 mt-32">
-      <div className="border-2 border-gray-600 shadow-gray-400 shadow-sm mx-10 px-7 py-7 rounded-xl">
-        <h2 className="pb-7 font-bold font-instrumentSans text-6xl text-center text-white italic tracking-widest">
+      <div className="border-2 border-gray-300 shadow-gray-400 shadow-sm mx-10 px-7 py-7 rounded-xl">
+        <h2 className="pb-7 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           Projects
         </h2>
 
