@@ -22,7 +22,7 @@ const SkillSlider = () => {
         extensions={{ AutoScroll }}
       >
         <SplideSlide>
-          <div className="flex justify-center items-center border-2 border-gray-600 rounded-xl overflow-hidden">
+          <div className="flex justify-center items-center border-2 border-gray-300 rounded-xl overflow-hidden">
             <div className="h-20" />
           </div>
         </SplideSlide>
