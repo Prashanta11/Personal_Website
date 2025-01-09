@@ -51,6 +51,8 @@ module.exports = {
           5: "hsl(var(--chart-5))",
         },
         "custom-gray": "#0F0F0F", // Add your custom background color here
+        bodyColor: "rgb(232, 232, 232)",
+        cardColor: "rgb(240, 240, 240)",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
