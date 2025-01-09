@@ -7,6 +7,7 @@ const Projects = () => {
         <h2 className="pb-7 font-bold font-instrumentSans text-6xl text-center text-white italic tracking-widest">
           Projects
         </h2>
+
         <div className="flex justify-around items-center">
           <div className="relative rounded-xl overflow-hidden group">
             <img
@@ -18,7 +19,21 @@ const Projects = () => {
               <h1 className="font-instrumentSans text-2xl italic tracking-widest">
                 Project-1
               </h1>
-              <ExternalLinkIcon className="hover:text-pink-300" />
+              <ExternalLinkIcon className="hover:text-pink-600" />
+            </div>
+          </div>
+
+          <div className="relative rounded-xl overflow-hidden group">
+            <img
+              className="w-64 h-72"
+              src="https://www.picsum.photos/800"
+              alt=""
+            />
+            <div className="absolute inset-0 flex flex-col justify-center items-center gap-2 bg-black/20 transition-transform translate-y-full group-hover:translate-y-0 duration-300">
+              <h1 className="font-instrumentSans text-2xl italic tracking-widest">
+                Project-1
+              </h1>
+              <ExternalLinkIcon className="hover:text-pink-600" />
             </div>
           </div>
           <div className="relative rounded-xl overflow-hidden group">
@@ -31,20 +46,7 @@ const Projects = () => {
               <h1 className="font-instrumentSans text-2xl italic tracking-widest">
                 Project-1
               </h1>
-              <ExternalLinkIcon className="hover:text-pink-300" />
-            </div>
-          </div>
-          <div className="relative rounded-xl overflow-hidden group">
-            <img
-              className="w-64 h-72"
-              src="https://www.picsum.photos/800"
-              alt=""
-            />
-            <div className="absolute inset-0 flex flex-col justify-center items-center gap-2 bg-black/20 transition-transform translate-y-full group-hover:translate-y-0 duration-300">
-              <h1 className="font-instrumentSans text-2xl italic tracking-widest">
-                Project-1
-              </h1>
-              <ExternalLinkIcon className="hover:text-pink-300" />
+              <ExternalLinkIcon className="hover:text-pink-600" />
             </div>
           </div>
         </div>

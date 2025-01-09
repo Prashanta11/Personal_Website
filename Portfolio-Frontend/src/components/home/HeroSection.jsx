@@ -9,7 +9,7 @@ const HeroSection = () => {
           <h1 className="font-bold font-instrumentSans text-6xl text-center md:text-6xl italic leading-tight tracking-widest">
             Hi, I'm Prashanta
           </h1>
-          <p className="mt-4 max-w-lg text-sm text-white/60 md:text-xl italic">
+          <p className="mt-4 max-w-lg font-light text-sm text-white md:text-xl italic -white">
             A passionate Full-Stack Developer and Cybersecurity Enthusiast
             dedicated to building scalable, secure, and user-friendly solutions.
           </p>

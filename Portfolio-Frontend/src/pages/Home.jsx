@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import AboutSection from "@/components/home/AboutSection";
+import ExperienceSection from "@/components/home/ExperienceSection";
 import HeroSection from "@/components/home/HeroSection";
 import Projects from "@/components/home/Projects";
 import SkillSlider from "@/components/home/SkillSlider";
@@ -15,6 +16,7 @@ const Home = () => {
         <AboutSection />
         <Timeline />
         <Projects />
+        <ExperienceSection />
       </div>
     </>
   );
