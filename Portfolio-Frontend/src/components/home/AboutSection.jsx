@@ -1,8 +1,8 @@
 const AboutSection = () => {
   return (
     <>
-      <div className="flex gap-7 border-2 border-gray-600 shadow-gray-400 shadow-sm mx-20 px-4 py-3 rounded-xl">
-        <div className="border-2 border-gray-600 rounded-lg w-6/12 overflow-hidden">
+      <div className="flex gap-7 border-2 border-gray-300 shadow-gray-400 shadow-sm mx-20 px-4 py-3 rounded-xl">
+        <div className="border-2 border-gray-300 rounded-lg w-6/12 overflow-hidden">
           <img
             src="https://www.picsum.photos/800"
             alt="Prashanta"
@@ -13,7 +13,7 @@ const AboutSection = () => {
           <h1 className="pb-6 h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest overflow-y-hidden">
             About Me
           </h1>
-          <p className="pt-4 font-light text-gray-300 text-justify italic leading-6">
+          <p className="pt-4 font-light text-[#333] text-justify italic leading-6">
             Hi there! I'm Prashanta, a passionate and dedicated full-stack
             developer with a strong foundation in computer science and
             information technology. I hold a BSc in CSIT from Tribhuvan
