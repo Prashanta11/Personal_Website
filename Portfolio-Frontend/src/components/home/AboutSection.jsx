@@ -1,7 +1,7 @@
 const AboutSection = () => {
   return (
     <>
-      <div className="flex gap-7 border-2 border-gray-600 shadow-gray-400 shadow-sm mx-10 px-4 py-3 rounded-xl">
+      <div className="flex gap-7 border-2 border-gray-600 shadow-gray-400 shadow-sm mx-20 px-4 py-3 rounded-xl">
         <div className="border-2 border-gray-600 rounded-lg w-6/12 overflow-hidden">
           <img
             src="https://www.picsum.photos/800"
