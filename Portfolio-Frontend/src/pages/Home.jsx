@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import AboutSection from "@/components/home/AboutSection";
 import ExperienceSection from "@/components/home/ExperienceSection";
@@ -12,9 +13,11 @@ const Home = () => {
     <>
       <div className="bg-bodyColor pb-10 text-black">
         <div
-          style={{
-            backgroundImage: "url('https://www.picsum.photos/1920/1080')",
-          }}
+          style={
+            {
+              // backgroundImage: "url('https://www.picsum.photos/1920/1080')",
+            }
+          }
           className="relative bg-cover bg-no-repeat bg-center h-screen text-black"
         >
           <Header />
@@ -28,6 +31,7 @@ const Home = () => {
           <Projects />
           <ExperienceSection />
           <MyApps />
+          <Footer />
         </div>
       </div>
     </>

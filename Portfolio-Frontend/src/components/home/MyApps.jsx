@@ -9,7 +9,7 @@ const MyApps = () => {
           {Array.from({ length: 30 }).map((_, index) => (
             <div
               key={index}
-              className="bg-black rounded-lg overflow-hidden size-20"
+              className="bg-black hover:shadow-lg rounded-lg transform transition-transform overflow-hidden hover:scale-105 size-20"
             >
               <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuYdLEzBvwemix8pwsncUkLLOQqnByncadg&s"
