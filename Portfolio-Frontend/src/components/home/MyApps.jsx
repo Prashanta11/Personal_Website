@@ -1,6 +1,6 @@
 const MyApps = () => {
   return (
-    <section className="border-2 border-gray-300 shadow-gray-400 shadow-sm mx-10 mt-32 px-4 py-3 rounded-xl">
+    <section className="border-2 border-gray-600 shadow-gray-400 shadow-sm mx-10 mt-32 px-4 py-3 rounded-xl">
       <div className="mx-auto px-4 container">
         <h2 className="mb-8 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           My Apps
