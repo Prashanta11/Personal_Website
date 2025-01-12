@@ -29,7 +29,11 @@ const validatePhoneNumber = (phone) => {
 };
 
 export const register = catchAsyncError(async (req, res, next) => {
-  if (!req.files?.avatar ||! req.files?.resume || Object.keys(req.files).length === 0 ) {
+  if (
+    !req.files?.avatar ||
+    !req.files?.resume ||
+    Object.keys(req.files).length === 0
+  ) {
     return next(new ErrorHandler("Avatar and  Resume Are Required", 400));
   }
   const { avatar } = req.files;
@@ -68,7 +72,6 @@ export const register = catchAsyncError(async (req, res, next) => {
     instagramURL,
   } = req.body;
 
-  
   // Validate email
   if (!validateEmail(email)) {
     return next(new ErrorHandler("Invalid email format", 400));
@@ -81,22 +84,32 @@ export const register = catchAsyncError(async (req, res, next) => {
   }
   // Validate password
   if (!validatePassword(password)) {
-    return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
+    return next(
+      new ErrorHandler(
+        "Password must be at least 8 characters long and contain at least one letter, one number, and one special character",
+        400
+      )
+    );
   }
 
   // Validate URLs
-  const urls = [portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL];
+  const urls = [
+    portfolioURL,
+    githubURL,
+    facebookURL,
+    linkedinURL,
+    instagramURL,
+  ];
   for (const url of urls) {
     if (url && !validateURL(url)) {
       return next(new ErrorHandler("Invalid URL format", 400));
     }
   }
-  
+
   // Validate phone number
   if (!validatePhoneNumber(phone)) {
     return next(new ErrorHandler("Invalid phone number format", 400));
   }
-
 
   console.log(req.body);
   const user = await User.create({
@@ -124,7 +137,6 @@ export const register = catchAsyncError(async (req, res, next) => {
   generateToken(user, "User Registered", 201, res);
 });
 
-
 export const login = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -147,19 +159,20 @@ export const login = catchAsyncError(async (req, res, next) => {
   generateToken(user, "Login Successfully!", 200, res);
 });
 
-
-export const logout = catchAsyncError(async(req, res, next)=>
-{
-  res.status(200).cookie("token", "",{
-    expires: new Date(Date.now()),
-    httpOnly: true,
-  }).json({
-    success : true,
-    message: "Logged Out",
-  });
+export const logout = catchAsyncError(async (req, res, next) => {
+  res
+    .status(200)
+    .cookie("token", "", {
+      expires: new Date(Date.now()),
+      httpOnly: true,
+    })
+    .json({
+      success: true,
+      message: "Logged Out",
+    });
 });
- 
-export const getUser= catchAsyncError(async(req,res,next)=>{
+
+export const getUser = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.user.id);
   res.status(200).json({
     success: true,
@@ -167,69 +180,79 @@ export const getUser= catchAsyncError(async(req,res,next)=>{
   });
 });
 
-export  const updateProfile = catchAsyncError(async(req,res,next)=>{
+export const updateProfile = catchAsyncError(async (req, res, next) => {
   const newUserdata = {
-    fullName : req.body.fullName,
-    email : req.body.email,
-    phone : req.body.phone,
-    aboutMe : req.body.aboutMe,
-    portfolioURL : req.body.portfolioURL,
-    githubURL : req.body.githubURL,
-    facebookURL : req.body.facebookURL,
-    linkedinURL : req.body.linkedinURL,
-    instagramURL : req.body.instagramURL,
+    fullName: req.body.fullName,
+    email: req.body.email,
+    phone: req.body.phone,
+    aboutMe: req.body.aboutMe,
+    portfolioURL: req.body.portfolioURL,
+    githubURL: req.body.githubURL,
+    facebookURL: req.body.facebookURL,
+    linkedinURL: req.body.linkedinURL,
+    instagramURL: req.body.instagramURL,
   };
-  const { email, portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL, phone } = req.body;
+  const {
+    email,
+    portfolioURL,
+    githubURL,
+    facebookURL,
+    linkedinURL,
+    instagramURL,
+    phone,
+  } = req.body;
   // Validate email
   if (!validateEmail(email)) {
     return next(new ErrorHandler("Invalid email format", 400));
   }
 
-
-
   // Validate URLs
-  const urls = [portfolioURL, githubURL, facebookURL, linkedinURL, instagramURL];
+  const urls = [
+    portfolioURL,
+    githubURL,
+    facebookURL,
+    linkedinURL,
+    instagramURL,
+  ];
   for (const url of urls) {
     if (url && !validateURL(url)) {
       return next(new ErrorHandler("Invalid URL format", 400));
     }
   }
-  
+
   // Validate phone number
   if (!validatePhoneNumber(phone)) {
     return next(new ErrorHandler("Invalid phone number format", 400));
   }
 
-  if (req.files && req.files.avatar){
+  if (req.files && req.files.avatar) {
     const avatar = req.files.avatar;
     const user = await User.findById(req.user.id);
-    const profileImageId= user.avatar.public_id;
+    const profileImageId = user.avatar.public_id;
     await Cloudinary.uploader.destroy(profileImageId);
-    const cloudinaryResponse = Cloudinary.uploader.upload(
-      avatar.tempFilePath,
-      { folder: "AVATARS" }
-    );
+    const cloudinaryResponse = Cloudinary.uploader.upload(avatar.tempFilePath, {
+      folder: "AVATARS",
+    });
     newUserdata.avatar = {
       public_id: (await cloudinaryResponse).public_id,
       url: (await cloudinaryResponse).secure_url,
     };
   }
-  if (req.files && req.files.resume){
+  if (req.files && req.files.resume) {
     const resume = req.files.resume;
     const user = await User.findById(req.user.id);
-    const resumeId= user.resume.public_id;
+    const resumeId = user.resume.public_id;
     await Cloudinary.uploader.destroy(resumeId);
-    const cloudinaryResponse = Cloudinary.uploader.upload(
-      resume.tempFilePath,
-      { folder: "RESUME" }
-    );
+    const cloudinaryResponse = Cloudinary.uploader.upload(resume.tempFilePath, {
+      folder: "RESUME",
+    });
     newUserdata.resume = {
       public_id: (await cloudinaryResponse).public_id,
       url: (await cloudinaryResponse).secure_url,
     };
   }
-  const user = await User.findByIdAndUpdate(req.user.id,newUserdata,{
-    new:true,
+  const user = await User.findByIdAndUpdate(req.user.id, newUserdata, {
+    new: true,
     runValidators: true,
     userFindAndModify: false,
   });
@@ -239,101 +262,117 @@ export  const updateProfile = catchAsyncError(async(req,res,next)=>{
     user,
   });
 });
-export const updatePassword = catchAsyncError(async(req,res,next)=>{
-  const { currentPassword, newPassword , confirmNewPassword}= req.body;
-  if(! currentPassword||!newPassword || !confirmNewPassword){
-    return next( new ErrorHandler("Please Fill All Fields",400));
+export const updatePassword = catchAsyncError(async (req, res, next) => {
+  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+  if (!currentPassword || !newPassword || !confirmNewPassword) {
+    return next(new ErrorHandler("Please Fill All Fields", 400));
   }
   const user = await User.findById(req.user.id).select("+password");
-const isPasswordMatched = await user.comparePassword(currentPassword);
-if (!isPasswordMatched){
-  return next(new ErrorHandler(" Incorrect Current Password",400));
-}
-if(newPassword !== confirmNewPassword){
-  return next(new ErrorHandler(" New Password didn't matched",400));
-
-}
-if (!validatePassword(newPassword)){
-  return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
-}
-if (currentPassword === newPassword){
-  return next(new ErrorHandler("Current Password and New Password are same",400));
-}
-user.password = newPassword;
-await user.save();
-res.status(200).json({
-  success : true,
-  message : " Password Updated",
+  const isPasswordMatched = await user.comparePassword(currentPassword);
+  if (!isPasswordMatched) {
+    return next(new ErrorHandler(" Incorrect Current Password", 400));
+  }
+  if (newPassword !== confirmNewPassword) {
+    return next(new ErrorHandler(" New Password didn't matched", 400));
+  }
+  if (!validatePassword(newPassword)) {
+    return next(
+      new ErrorHandler(
+        "Password must be at least 8 characters long and contain at least one letter, one number, and one special character",
+        400
+      )
+    );
+  }
+  if (currentPassword === newPassword) {
+    return next(
+      new ErrorHandler("Current Password and New Password are same", 400)
+    );
+  }
+  user.password = newPassword;
+  await user.save();
+  res.status(200).json({
+    success: true,
+    message: " Password Updated",
+  });
 });
-});
-export const getUserForPortfolio = catchAsyncError(async(req,res,next)=>{
-const id = "6762b86b45e250fd9568cd43";
-const user = await User.findById(id);
-if (!user) {
-  return res.status(404).json({
+export const getUserForPortfolio = catchAsyncError(async (req, res, next) => {
+  const user = await User.findOne();
+  if (!user) {
+    return res.status(404).json({
       success: false,
       message: "User not found",
-  });}
-res.status(200).json({
-  success : true,
-  user,
-});
-});
- export const forgetPassword = catchAsyncError(async(req,res,next)=>{
-  const user = await User.findOne({
-    email: req.body.email
+    });
+  }
+  res.status(200).json({
+    success: true,
+    user,
   });
-  if (!user){
-    return next(new ErrorHandler("User not Found",404));
+});
+export const forgetPassword = catchAsyncError(async (req, res, next) => {
+  const user = await User.findOne({
+    email: req.body.email,
+  });
+  if (!user) {
+    return next(new ErrorHandler("User not Found", 404));
   }
 
   const resetToken = user.getResetPasswordToken();
-  
-  await user.save({ validateBeforeSave: false});
- const resetPasswordurl = `${process.env. DASHBOARD_URL}/password/reset/${resetToken}`
- const message = `Your Reset Password Token is:- \n\n ${resetPasswordurl} If you haven't requested this please ignore  it`;
- try {
-  await sendEmail({
-    email: user.email,
-    subject: "Personal Portfolio Dashboard recovery Password",
-    message,
-  });
-  res.status(200).json({
-    success: true,
-    message: `Email sent to ${user.email} successfully!`,
-  });
- } catch (error) {
-  user.resetPasswordExpire = undefined;
-  user.resetPasswordToken = undefined;
-  await user.save();
-  return next (new ErrorHandler(error.message,500));
- }
- });
 
- export const resetPassword = catchAsyncError(async(req,res,next)=>{
-  const {token} = req.params;
-  const resetPasswordToken = crypto.createHash("sha256").update(token).digest("hex");
+  await user.save({ validateBeforeSave: false });
+  const resetPasswordurl = `${process.env.DASHBOARD_URL}/password/reset/${resetToken}`;
+  const message = `Your Reset Password Token is:- \n\n ${resetPasswordurl} If you haven't requested this please ignore  it`;
+  try {
+    await sendEmail({
+      email: user.email,
+      subject: "Personal Portfolio Dashboard recovery Password",
+      message,
+    });
+    res.status(200).json({
+      success: true,
+      message: `Email sent to ${user.email} successfully!`,
+    });
+  } catch (error) {
+    user.resetPasswordExpire = undefined;
+    user.resetPasswordToken = undefined;
+    await user.save();
+    return next(new ErrorHandler(error.message, 500));
+  }
+});
+
+export const resetPassword = catchAsyncError(async (req, res, next) => {
+  const { token } = req.params;
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
 
   const existingUser = await User.findOne({
     resetPasswordToken,
-    resetPasswordExpire: {$gt: Date.now() },
+    resetPasswordExpire: { $gt: Date.now() },
   });
-  if (!existingUser){
-    return next ( new  ErrorHandler("Reset password token is invalid or expired",400));
-  
+  if (!existingUser) {
+    return next(
+      new ErrorHandler("Reset password token is invalid or expired", 400)
+    );
   }
-  if(req.body.password !== req.body.confirmPassword){
-    return next( new ErrorHandler(" Password and  Confirm Password do not match"));
+  if (req.body.password !== req.body.confirmPassword) {
+    return next(
+      new ErrorHandler(" Password and  Confirm Password do not match")
+    );
   }
-    // Validate password
-    if (!validatePassword(req.body.password)) {
-      return next(new ErrorHandler("Password must be at least 8 characters long and contain at least one letter, one number, and one special character", 400));
-    }
-  
+  // Validate password
+  if (!validatePassword(req.body.password)) {
+    return next(
+      new ErrorHandler(
+        "Password must be at least 8 characters long and contain at least one letter, one number, and one special character",
+        400
+      )
+    );
+  }
 
-existingUser.password = await req.body.password;
-existingUser.resetPasswordExpire  = undefined;
-existingUser.resetPasswordToken = undefined;
-await existingUser.save();
-generateToken(existingUser, "Reset Password Successfully",200,res);  
- });
+  existingUser.password = await req.body.password;
+  existingUser.resetPasswordExpire = undefined;
+  existingUser.resetPasswordToken = undefined;
+  await existingUser.save();
+  generateToken(existingUser, "Reset Password Successfully", 200, res);
+});
