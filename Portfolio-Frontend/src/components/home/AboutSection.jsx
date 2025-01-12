@@ -13,17 +13,15 @@ const AboutSection = () => {
           <h1 className="pb-6 h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest overflow-y-hidden">
             About Me
           </h1>
-          <p className="pt-4 font-light text-[#333] text-justify italic leading-6">
-            Hi there! I'm Prashanta, a passionate and dedicated full-stack
-            developer with a strong foundation in computer science and
-            information technology. I hold a BSc in CSIT from Tribhuvan
-            University, and my journey in the tech world has been driven by a
-            deep love for problem-solving, technology, and creating impactful
-            solutions. My skills include a versatile stack of JavaScript,
-            React.js, MongoDB, Node.js, HTML, CSS, Tailwind, Git, and Postman.
-            Whether it's designing intuitive user interfaces or building
-            efficient backend systems, I thrive on turning ideas into functional
-            and visually appealing web applications.
+          <p className="pt-4 font-semibold text-2xl text-black text-justify italic leading-6 tracking-widest">
+            Hey there! I'm Prashanta, a developer with a deep love for
+            technology and problem-solving. I graduated with a BSc in CSIT from
+            Tribhuvan University, and I'm passionate about turning ideas into
+            impactful solutions. My skills include JavaScript, React.js,
+            MongoDB, Node.js, HTML, CSS, Tailwind, Git. Whether I’m designing
+            smooth user experiences or building efficient systems, I’m always
+            ready to dive in. When I’m not coding, you’ll find me singing and
+            spreading good vibes!!
           </p>
 
           <div className="flex justify-around pt-7">
