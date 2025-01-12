@@ -1,3 +1,6 @@
+import { BiLogoGmail } from "react-icons/bi";
+import { FaLinkedin } from "react-icons/fa";
+import { FaSquareGithub } from "react-icons/fa6";
 const Footer = () => {
   return (
     <footer className="border-gray-300 bg-gray-200 shadow-gray-400 shadow-sm mx-10 mt-20 px-4 px-7 py-10 py-7 rounded-xl text-black">
@@ -12,20 +15,30 @@ const Footer = () => {
             approach? I’d love to share over a coffee chat or during an
             interview. Feel free to connect—I’m just a message away!
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-5 mt-4">
             <a
-              href="https://linkedin.com/"
+              href=""
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
+              rel="noreferrer"
+              className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
             >
-              LinkedIn
+              <BiLogoGmail size={30} />
             </a>
             <a
-              href="mailto:your-email@gmail.com"
-              className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
+              href="https://www.facebook.com/prashanta.kc.1"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
             >
-              Gmail
+              <FaLinkedin size={30} />
+            </a>
+            <a
+              href=""
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
+            >
+              <FaSquareGithub size={30} />
             </a>
           </div>
         </div>
