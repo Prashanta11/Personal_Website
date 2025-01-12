@@ -33,14 +33,14 @@ const Header = () => {
     },
   ];
   return (
-    <div className="flex justify-between items-center py-5 p-5">
+    <div className="top-0 z-50 sticky flex justify-between items-center bg-bodyColor py-5 p-5 sm:">
       <nav className="mx-auto">
         <ul className="flex space-x-6 font-semibold text-lg">
           {navItems.map((item, index) => (
             <li key={index}>
               <NavLink
                 to={item.link}
-                className="text-black hover:text-gray-600"
+                className="text-black hover:text-blue-800"
               >
                 {item.name}
               </NavLink>
