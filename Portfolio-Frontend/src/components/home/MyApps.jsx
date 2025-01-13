@@ -1,20 +1,27 @@
+import { get } from "@/api/api";
+import { useEffect, useState } from "react";
+
 const MyApps = () => {
+  const [apps, setApps] = useState([]);
+  useEffect(() => {
+    get("softwareApplication/getall").then((response) => {
+      setApps(response.SoftwareApplication);
+    });
+  }, []);
+
   return (
-    <section className="border-2 border-gray-300 shadow-gray-400 shadow-sm mx-10 mt-32 px-4 py-3 rounded-xl">
+    <section className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-32 px-4 py-3 rounded-xl">
       <div className="mx-auto px-4 container">
-        <h2 className="mb-8 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
+        <h2 className="mb-14 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           My Apps
         </h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          {Array.from({ length: 30 }).map((_, index) => (
+        <div className="flex flex-wrap justify-center gap-20 pb-8">
+          {apps.map((app, index) => (
             <div
               key={index}
-              className="bg-black hover:shadow-lg rounded-lg transform transition-transform overflow-hidden hover:scale-105 size-20"
+              className="hover:shadow-lg rounded-lg transform transition-transform overflow-hidden hover:scale-105 size-20"
             >
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuYdLEzBvwemix8pwsncUkLLOQqnByncadg&s"
-                className="w-full h-full"
-              />
+              <img src={app?.svg?.url} className="w-full h-full" />
             </div>
           ))}
         </div>
