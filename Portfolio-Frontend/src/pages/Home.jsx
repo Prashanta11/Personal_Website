@@ -10,7 +10,7 @@ import Timeline from "@/components/home/Timeline";
 
 const Home = () => {
   return (
-    <>
+    <div className="bg-bodyColor px-52 pb-32">
       <Header />
       <div className="bg-bodyColor pb-10 text-black">
         <div
@@ -22,9 +22,9 @@ const Home = () => {
           className="relative bg-cover bg-no-repeat bg-center h-screen text-black"
         >
           <HeroSection />
-          <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
+          {/* <div className="absolute inset-0 bg-black/10 pointer-events-none"></div> */}
         </div>
-        <div className="bg-bodyColor px-10">
+        <div className="bg-bodyColor">
           <SkillSlider />
           <AboutSection />
           <Timeline />
@@ -34,7 +34,7 @@ const Home = () => {
           <Footer />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
