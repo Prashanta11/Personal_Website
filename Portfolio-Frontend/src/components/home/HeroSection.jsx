@@ -11,7 +11,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="flex justify-center items-center h-full text-black">
+    <section className="flex justify-center items-center bg-gray-200 hover:bg-bodyColor h-full text-black">
       <div className="grid md:grid-cols-1 mx-auto px-6 container">
         {/* Left Content - Text and Resume Button */}
         <div className="flex flex-col flex-1 justify-center items-center px-7 h-full text-center md:text-left">
