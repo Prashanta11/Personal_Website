@@ -125,7 +125,7 @@ export const deleteProject = (id) => async (dispatch) => {
   dispatch(projectSlice.actions.deleteProjectRequest());
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/project/delete/delete/${id}`,
+      `http://localhost:5000/api/v1/project/delete/${id}`,
       {
         withCredentials: true,
       }

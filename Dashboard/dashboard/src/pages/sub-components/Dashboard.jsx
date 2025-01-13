@@ -33,7 +33,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SpecialLoadingButton from "./SpecialLoadingButton";
 
-
 const Dashboard = () => {
   const navigateTo = useNavigate();
   const gotoManageSkill = () => {
@@ -46,7 +45,7 @@ const Dashboard = () => {
     navigateTo("/manage/experience");
   };
   const gotoManageProjects = () => {
-    navigateTo("/manage/project");
+    navigateTo("/manage/projects");
   };
 
   const { user } = useSelector((state) => state.user);
@@ -63,7 +62,7 @@ const Dashboard = () => {
     error: appError,
     message: appMessage,
   } = useSelector((state) => state.softwareApplications);
-  console.log(softwareApplications)
+  console.log(softwareApplications);
   const {
     timeline,
     loading: timelineLoading,
@@ -77,7 +76,6 @@ const Dashboard = () => {
     error: experienceError,
     message: experienceMessage,
   } = useSelector((state) => state.experience);
-
 
   const { projects, error: projectError } = useSelector(
     (state) => state.project
@@ -129,9 +127,9 @@ const Dashboard = () => {
   return (
     <>
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-        <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-2 xl:grid-cols-2">
-          <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
-            <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <main className="flex-1 items-start gap-4 md:gap-8 grid lg:grid-cols-2 xl:grid-cols-2 sm:px-6 sm:py-0 p-4">
+          <div className="items-start gap-4 md:gap-8 grid lg:col-span-2 auto-rows-max">
+            <div className="gap-4 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
               <Card className="sm:col-span-2">
                 <CardHeader className="pb-3">
                   <CardDescription className="max-w-lg text-balance leading-relaxed">
@@ -139,7 +137,9 @@ const Dashboard = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardFooter>
-                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Visit Portfolio</Button>
+                  <Button className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none">
+                    Visit Portfolio
+                  </Button>
                 </CardFooter>
               </Card>
               <Card className="flex flex-col justify-center">
@@ -150,7 +150,12 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardFooter>
-                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageProjects}>Manage Projects</Button>
+                  <Button
+                    className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none"
+                    onClick={gotoManageProjects}
+                  >
+                    Manage Projects
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -162,15 +167,18 @@ const Dashboard = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardFooter>
-                  <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageSkill}>Manage Skill</Button>
+                  <Button
+                    className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none"
+                    onClick={gotoManageSkill}
+                  >
+                    Manage Skill
+                  </Button>
                 </CardFooter>
               </Card>
-
             </div>
             <Tabs>
               <TabsContent>
                 <Card>
-
                   <CardHeader className="px-7">
                     <CardTitle>Projects</CardTitle>
                   </CardHeader>
@@ -185,9 +193,8 @@ const Dashboard = () => {
                           <TableHead className="hidden md:table-cell">
                             Deployed
                           </TableHead>
-                          <TableHead className="md:table-cell ">
-                            <span className="pl-4">
-                            Update</span>
+                          <TableHead className="md:table-cell">
+                            <span className="pl-4">Update</span>
                           </TableHead>
                           <TableHead className="text-right">
                             <span className="pr-4">Visit</span>
@@ -217,7 +224,9 @@ const Dashboard = () => {
                                 </TableCell>
                                 <TableCell className="md:table-cell">
                                   <Link to={`/update/project/${element._id}`}>
-                                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update</Button>
+                                    <Button className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none">
+                                      Update
+                                    </Button>
                                   </Link>
                                 </TableCell>
                                 <TableCell className="text-right">
@@ -225,7 +234,9 @@ const Dashboard = () => {
                                     to={element.projectLink}
                                     target="_blank"
                                   >
-                                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Visit</Button>
+                                    <Button className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none">
+                                      Visit
+                                    </Button>
                                   </Link>
                                 </TableCell>
                               </TableRow>
@@ -248,18 +259,20 @@ const Dashboard = () => {
             <Tabs>
               <TabsContent>
                 <Card>
-                  <CardHeader className="px-7 gap-3">
+                  <CardHeader className="gap-3 px-7">
                     <CardTitle>Skills</CardTitle>
                   </CardHeader>
-                  <CardContent className="grid sm:grid-cols-2 gap-4">
+                  <CardContent className="gap-4 grid sm:grid-cols-2">
                     {skills && skills.length > 0 ? (
                       skills.map((element) => {
                         return (
                           <Card key={element._id}>
                             <CardHeader>{element.title}</CardHeader>
                             <CardFooter>
-                              <Progress className="bg-white"  value={element.proficiency} />
-                         
+                              <Progress
+                                className="bg-white"
+                                value={element.proficiency}
+                              />
                             </CardFooter>
                           </Card>
                         );
@@ -273,7 +286,7 @@ const Dashboard = () => {
             </Tabs>
 
             <Tabs>
-              <TabsContent className="grid min-[1050px]:grid-cols-2 gap-4">
+              <TabsContent className="gap-4 grid min-[1050px]:grid-cols-2">
                 <Card>
                   <CardHeader className="px-7">
                     <CardTitle>Software Applications</CardTitle>
@@ -284,7 +297,7 @@ const Dashboard = () => {
                         <TableRow>
                           <TableHead>Name</TableHead>
                           <TableHead className="md:table-cell">Icon</TableHead>
-                          <TableHead className="md:table-cell text-center">
+                          <TableHead className="text-center md:table-cell">
                             Action
                           </TableHead>
                         </TableRow>
@@ -306,14 +319,15 @@ const Dashboard = () => {
                                     alt={element.name}
                                   />
                                 </TableCell>
-                                <TableCell className="md:table-cell  text-center">
+                                <TableCell className="text-center md:table-cell">
                                   {appLoading && appId === element._id ? (
                                     <SpecialLoadingButton
                                       content={"Deleting"}
                                       width={"w-fit"}
                                     />
                                   ) : (
-                                    <Button className=" hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                                    <Button
+                                      className="hover:bg-red-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none"
                                       onClick={() =>
                                         handleDeleteSoftwareApp(element._id)
                                       }
@@ -338,9 +352,12 @@ const Dashboard = () => {
                 </Card>
 
                 <Card>
-                  <CardHeader className="px-7 flex items-center justify-between flex-row">
+                  <CardHeader className="flex flex-row justify-between items-center px-7">
                     <CardTitle>Experience</CardTitle>
-                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageExperience} >
+                    <Button
+                      className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none"
+                      onClick={gotoManageExperience}
+                    >
                       Manage Experience
                     </Button>
                   </CardHeader>
@@ -351,7 +368,7 @@ const Dashboard = () => {
                           <TableHead>Title</TableHead>
                           <TableHead>Description</TableHead>
                           <TableHead className="md:table-cell">From</TableHead>
-                          <TableHead className="md:table-cell text-right">
+                          <TableHead className="text-right md:table-cell">
                             To
                           </TableHead>
                         </TableRow>
@@ -370,7 +387,7 @@ const Dashboard = () => {
                                 <TableCell className="md:table-cell">
                                   {element.date.from}
                                 </TableCell>
-                                <TableCell className="md:table-cell  text-right">
+                                <TableCell className="text-right md:table-cell">
                                   {element.date.to}
                                 </TableCell>
                               </TableRow>
@@ -388,9 +405,12 @@ const Dashboard = () => {
                   </CardContent>
                 </Card>
                 <Card>
-                  <CardHeader className="px-7 flex items-center justify-between flex-row">
+                  <CardHeader className="flex flex-row justify-between items-center px-7">
                     <CardTitle>Timeline</CardTitle>
-                    <Button className=" hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onClick={gotoManageTimeline} >
+                    <Button
+                      className="hover:bg-blue-600 focus:shadow-outline px-4 py-2 rounded font-bold text-white focus:outline-none"
+                      onClick={gotoManageTimeline}
+                    >
                       Manage Timeline
                     </Button>
                   </CardHeader>
@@ -401,7 +421,7 @@ const Dashboard = () => {
                           <TableHead>Title</TableHead>
                           <TableHead>Description</TableHead>
                           <TableHead className="md:table-cell">From</TableHead>
-                          <TableHead className="md:table-cell text-right">
+                          <TableHead className="text-right md:table-cell">
                             To
                           </TableHead>
                         </TableRow>
@@ -420,7 +440,7 @@ const Dashboard = () => {
                                 <TableCell className="md:table-cell">
                                   {element.timeline.from}
                                 </TableCell>
-                                <TableCell className="md:table-cell  text-right">
+                                <TableCell className="text-right md:table-cell">
                                   {element.timeline.to}
                                 </TableCell>
                               </TableRow>
