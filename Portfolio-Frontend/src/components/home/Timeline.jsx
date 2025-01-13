@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { get } from "@/api/api"; // Adjust the import path according to your project structure
+import { useEffect, useState } from "react";
 
 const Timeline = () => {
   const [timelineData, setTimelineData] = useState([]);
@@ -14,14 +14,14 @@ const Timeline = () => {
   }, []);
 
   return (
-    <div className="mx-10 mt-32">
-      <div className="border-2 border-gray-300 shadow-sm mx-10 px-7 py-7 rounded-xl">
+    <div className="mt-32">
+      <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-sm px-7 py-7 rounded-xl sh">
         <h2 className="pb-5 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           Timeline
         </h2>
         <ol className="sm:flex items-center">
           {timelineData.map((item, index) => (
-            <li key={index} className="relative mb-6 sm:mb-0">
+            <li key={index} className="relative mb-6 sm:mb-0 w-full">
               <div className="flex items-center">
                 <div className="z-10 flex justify-center items-center bg-blue-900 rounded-full ring-0 ring-gray-300 sm:ring-8 w-6 h-6 shrink-0">
                   <svg
@@ -31,21 +31,17 @@ const Timeline = () => {
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
-                    <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm0 18a8 8 0 110-16 8 8 0 010 16z" />
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                   </svg>
                 </div>
-                <div className="sm:flex hidden bg-gray-200 w-full h-0.5"></div>
+                <div className="sm:flex hidden bg-gray-300 w-full h-0.5"></div>
               </div>
-              <div className="mt-3 sm:pr-8">
-                <h3 className="font-semibold text-gray-900 text-lg">
-                  {item.title}
-                </h3>
-                <time className="block mb-2 font-normal text-gray-400 text-sm leading-none">
-                  {item.date}
+              <div className="mt-3 sm:pe-8">
+                <h3 className="font-semibold text-lg">{item?.title}</h3>
+                <time className="block mb-2 font-normal text-gray-500 text-sm leading-none">
+                  {item?.timeline?.from} - {item?.timeline?.to}
                 </time>
-                <p className="font-normal text-base text-gray-500">
-                  {item.description}
-                </p>
+                <p className="font-normal text-base">{item?.description}</p>
               </div>
             </li>
           ))}
