@@ -1,8 +1,15 @@
+import { get } from "@/api/api";
+import { useEffect, useState } from "react";
+import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
-import { BiLogoGmail } from "react-icons/bi";
 
 const HeroSection = () => {
+  const [userData, setUserdata] = useState({});
+  useEffect(() => {
+    get("user/me/portfolio").then((res) => setUserdata(res.user));
+  }, []);
+
   return (
     <section className="flex justify-center items-center h-full text-black">
       <div className="grid md:grid-cols-1 mx-auto px-6 container">
@@ -17,8 +24,9 @@ const HeroSection = () => {
             into joy and exploring what’s next!
           </p>
           <a
-            href="/resume.pdf" // Replace with the actual resume file path
+            href={userData?.resume?.url} // Replace with the actual resume file path
             download
+            target="_blank"
             className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
           >
             Download Resume
@@ -26,7 +34,7 @@ const HeroSection = () => {
 
           <div className="flex gap-5 mt-4">
             <a
-              href=""
+              href={userData?.githubURL} // Replace with the actual GitHub profile link"
               target="_blank"
               rel="noreferrer"
               className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
@@ -34,7 +42,7 @@ const HeroSection = () => {
               <FaSquareGithub size={30} />
             </a>
             <a
-              href="https://www.facebook.com/prashanta.kc.1"
+              href={userData?.linkedinURL} // Replace with the actual LinkedIn profile link
               target="_blank"
               rel="noreferrer"
               className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
@@ -42,7 +50,7 @@ const HeroSection = () => {
               <FaLinkedin size={30} />
             </a>
             <a
-              href=""
+              href={`mailto:${userData?.email}`} // Replace with the actual email address
               target="_blank"
               rel="noreferrer"
               className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
