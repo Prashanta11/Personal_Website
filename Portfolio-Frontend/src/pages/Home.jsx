@@ -14,11 +14,9 @@ const Home = () => {
       <Header />
       <div className="bg-bodyColor pb-10 text-black">
         <div
-          style={
-            {
-              // backgroundImage: "url('https://www.picsum.photos/1920/1080')",
-            }
-          }
+          style={{
+            backgroundImage: "url('https://www.picsum.photos/1920/1080')",
+          }}
           className="relative bg-cover bg-no-repeat bg-center h-screen text-black"
         >
           <HeroSection />
