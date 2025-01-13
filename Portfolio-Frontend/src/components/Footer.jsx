@@ -1,9 +1,37 @@
+import { post } from "@/api/api";
+import { Check, Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
 const Footer = () => {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      setLoading(true);
+      const response = await post("message/send", data);
+
+      setLoading(false);
+      setMessage(response.message);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (message)
+      setTimeout(() => {
+        setMessage(null);
+      }, 5000);
+  }, [message]);
+
   return (
-    <footer className="border-gray-300 bg-gray-200 shadow-gray-400 shadow-sm mx-10 mt-20 px-4 px-7 py-10 py-7 rounded-xl text-black">
+    <footer className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-20 px-4 py-10 rounded-xl text-black">
       <div className="flex md:flex-row flex-col justify-between gap-8 mx-auto container">
         {/* About Section */}
         <div className="flex-1">
@@ -47,8 +75,9 @@ const Footer = () => {
         <div className="flex-1 border-2 border-gray-300 shadow-gray-400 shadow-sm mx-10 px-7 py-7 rounded-xl">
           <h3 className="mb-2 font-bold text-2xl">Contact Me</h3>
           <form
-            action="https://formspree.io/f/{your_form_id}" // Replace with your Formspree endpoint or backend API
-            method="POST"
+            onSubmit={handleSubmit}
+            action={handleSubmit}
+            // method="POST"
             className="space-y-4"
           >
             <div>
@@ -58,7 +87,7 @@ const Footer = () => {
               <input
                 type="text"
                 id="name"
-                name="name"
+                name="senderName"
                 className="border-gray-100 bg-gray-300 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 w-full text-white focus:outline-none"
                 required
               />
@@ -89,10 +118,18 @@ const Footer = () => {
             </div>
             <button
               type="submit"
-              className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
+              disabled={loading}
+              className="inline-flex justify-center items-center gap-1 bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
             >
-              Send Message
+              Send Message{" "}
+              {loading && <Loader2 size={20} className="animate-spin" />}
             </button>
+            {message && (
+              <p className="flex gap-1 text-green-400 text-sm">
+                <Check size={20} />
+                {message}
+              </p>
+            )}
           </form>
         </div>
       </div>
