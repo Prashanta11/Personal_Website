@@ -14,13 +14,13 @@ const Timeline = () => {
   }, []);
 
   return (
-    <div className="mt-32">
+    <div id="timeline" className="mt-32">
       <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-sm px-7 py-7 rounded-xl sh">
         <h2 className="pb-5 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           Timeline
         </h2>
         <ol className="sm:flex items-center">
-          {timelineData.map((item, index) => (
+          {timelineData?.map((item, index) => (
             <li key={index} className="relative mb-6 sm:mb-0 w-full">
               <div className="flex items-center">
                 <div className="z-10 flex justify-center items-center bg-blue-900 rounded-full ring-0 ring-gray-300 sm:ring-8 w-6 h-6 shrink-0">
