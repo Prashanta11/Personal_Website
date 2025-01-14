@@ -13,14 +13,19 @@ import timelineRouter from "./routes/timelineRoutes.js";
 import userRouter from "./routes/userRoutes.js";
 const app = express();
 dotenv.config({ path: "../.env" });
-
-app.use(
-  cors({
-    origin: "https://personal-website-na5z.vercel.app",
-    methods: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ["*"];
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      // !origin check allows requests from non-browser clients like Postman
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  optionsSuccessStatus: 200, // For legacy browser support
+};
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 app.use(express.json());
