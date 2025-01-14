@@ -10,7 +10,7 @@ const AboutSection = () => {
 
   return (
     <>
-      <div className="gap-7 border-2 border-gray-300 grid grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full">
+      <div className="gap-7 border-2 border-gray-300 grid md:grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full">
         <div className="border-2 border-gray-300 rounded-lg h-full overflow-hidden grow">
           <img
             src="https://www.picsum.photos/800"
@@ -18,7 +18,10 @@ const AboutSection = () => {
             className="rounded-lg w-full h-full"
           />
         </div>
-        <div className="flex flex-col justify-center py-8 w-full">
+        <div
+          id="about"
+          className="flex flex-col justify-center px-4 md:px-0 py-8 w-full"
+        >
           <h1 className="relative pb-6 pl-14 w-max h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
             <img
               src={animatedImage}
