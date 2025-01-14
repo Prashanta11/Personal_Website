@@ -16,8 +16,7 @@ dotenv.config({ path: "../.env" });
 
 app.use(
   cors({
-    origin:
-      process.env.PORTFOLIO_URL || "https://personal-website-na5z.vercel.app",
+    origin: "https://personal-website-na5z.vercel.app/",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
