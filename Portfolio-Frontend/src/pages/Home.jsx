@@ -10,7 +10,7 @@ import Timeline from "@/components/home/Timeline";
 
 const Home = () => {
   return (
-    <div className="bg-bodyColor px-52 pb-32">
+    <div className="bg-bodyColor px-5 lg:px-20 xl:px-52">
       <Header />
       <div className="bg-bodyColor pb-10 text-black">
         <div
@@ -19,7 +19,7 @@ const Home = () => {
               // backgroundImage: "url('https://www.picsum.photos/1920/1080')",
             }
           }
-          className="relative bg-cover bg-no-repeat bg-center h-screen text-black"
+          className="relative bg-cover bg-no-repeat bg-center min-h-[67vh] text-black"
         >
           <HeroSection />
           {/* <div className="absolute inset-0 bg-black/10 pointer-events-none"></div> */}
