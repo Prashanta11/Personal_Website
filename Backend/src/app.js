@@ -20,7 +20,6 @@ const corsOptions = {
       "https://personal-website-na5z.vercel.app",
       "http://localhost:5173",
     ];
-    callback(null, true);
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       // !origin check allows requests from non-browser clients like Postman
       callback(null, true);
