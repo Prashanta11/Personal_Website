@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
+import { ReactTyped } from "react-typed";
 
 const HeroSection = () => {
   const [userData, setUserdata] = useState({});
@@ -11,13 +12,22 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="flex justify-center items-center bg-gray-200 hover:bg-bodyColor h-full text-black">
+    <section
+      id="home"
+      className="flex justify-center items-center bg-gray-200 hover:bg-bodyColor h-full text-black"
+    >
       <div className="grid md:grid-cols-1 mx-auto px-6 container">
         {/* Left Content - Text and Resume Button */}
         <div className="flex flex-col flex-1 justify-center items-center px-7 h-full text-center md:text-left">
-          <h1 className="font-bold font-instrumentSans text-6xl text-center md:text-6xl italic leading-tight tracking-widest">
-            Hi, I'm Prashanta
-          </h1>
+          <div className="relative w-full h-40">
+            <h1 className="absolute inset-0 flex justify-center items-center w-full font-bold font-instrumentSans text-6xl text-center md:text-6xl italic leading-tight tracking-widest">
+              <ReactTyped
+                showCursor={false}
+                strings={["Hi, I'm Prashanta"]}
+                typeSpeed={40}
+              />
+            </h1>
+          </div>
           <p className="mt-4 max-w-lg font-semibold text-black text-sm md:text-2xl italic -black">
             —a curious mind crafting code by day and melodies by night. Whether
             coding solutions or singing tunes, I’m all about turning passion
