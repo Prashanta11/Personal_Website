@@ -12,7 +12,7 @@ const SkillSlider = () => {
   console.log(skills);
 
   return (
-    <div className="py-10">
+    <div id="skills" className="py-10">
       <Splide
         options={{
           type: "loop",
@@ -30,9 +30,9 @@ const SkillSlider = () => {
         }}
         extensions={{ AutoScroll }}
       >
-        {skills.map((skill, index) => (
+        {skills?.map((skill, index) => (
           <SplideSlide
-            className="flex flex-col justify-center items-center bg-gray-200 hover:bg-bodyColor"
+            className="flex flex-col justify-center items-center bg-gray-200 hover:bg-bodyColor min-w-32"
             key={index}
           >
             <img
