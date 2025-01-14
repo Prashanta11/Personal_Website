@@ -16,7 +16,7 @@ dotenv.config({ path: "../.env" });
 
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    origin: "*",
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
