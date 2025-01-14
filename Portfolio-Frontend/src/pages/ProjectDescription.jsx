@@ -16,8 +16,8 @@ const ProjectDescription = () => {
 
   console.log(id);
   return (
-    <div className="px-10 pt-6">
-      <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mx-10 px-7 py-6 rounded-xl transition-colors">
+    <div className="md:px-10 pt-6">
+      <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mx-2 md:mx-10 px-4 md:px-7 py-6 rounded-xl transition-colors">
         <h2 className="pb-7 font-bold font-instrumentSans text-6xl text-center italic capitalize tracking-widest">
           {projectDetail?.title}
         </h2>
@@ -38,12 +38,13 @@ const ProjectDescription = () => {
               <ExternalLink className="inline-block font-medium text-6xl hover:text-blue-600" />
             </Link>
           </div>
-          <div>
-            <div className="gap-x-6 grid grid-cols-2 w-max">
-              <p className="font-medium">Technologies:</p>
+          <div className="space-y-3">
+            <div className="flex gap-3">
+              <p className="md:w-1/12 font-medium">Technologies:</p>
               <p className="">{projectDetail?.technologies}</p>
-
-              <p className="font-medium">Stack:</p>
+            </div>
+            <div className="flex gap-3">
+              <p className="md:w-1/12 font-medium">Stack:</p>
               <p className="">{projectDetail?.stack}</p>
             </div>
           </div>
