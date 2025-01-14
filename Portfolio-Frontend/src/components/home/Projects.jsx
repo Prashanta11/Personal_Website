@@ -9,14 +9,14 @@ const Projects = () => {
     get("project/getall").then((res) => setProjects(res.projects));
   }, []);
   return (
-    <div className="mt-32">
+    <div id="project" className="mt-32">
       <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-7 py-7 rounded-xl">
         <h2 className="pb-7 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           Projects
         </h2>
 
-        <div className="flex justify-around items-center">
-          {projects.map((project, index) => (
+        <div className="flex flex-wrap justify-around items-center gap-y-6">
+          {projects?.map((project, index) => (
             <div
               key={index}
               className="relative rounded-xl overflow-hidden group"
