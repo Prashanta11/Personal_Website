@@ -51,54 +51,50 @@ const ViewProject = () => {
 
   return (
     <>
-      <div className="flex mt-7 justify-center items-center min-h-[100vh] sm:gap-4 sm:py-4">
-        <div className="w-[100%] px-5 md:w-[1000px] pb-5">
+      <div className="flex justify-center items-center sm:gap-4 mt-7 sm:py-4 min-h-[100vh]">
+        <div className="px-5 pb-5 w-[100%] md:w-[1000px]">
           <div className="space-y-12">
-            <div className="border-b border-gray-900/10 pb-12">
+            <div className="border-gray-900/10 pb-12 border-b">
               <div className="flex justify-end">
                 <Button onClick={handleReturnToDashboard}>
                   Return to Dashboard
                 </Button>
               </div>
-              <div className="mt-10 flex flex-col gap-5">
-                <div className="w-full sm:col-span-4">
-                  <h1 className="text-2xl font-bold mb-4">{title}</h1>
+              <div className="flex flex-col gap-5 mt-10">
+                <div className="sm:col-span-4 w-full">
+                  <h1 className="mb-4 font-bold text-2xl">{title}</h1>
                   <img
-                    src={
-                      projectBanner
-                        ? projectBanner
-                        : "/avatarHolder.jpg"
-                    }
+                    src={projectBanner ? projectBanner : "/avatarHolder.jpg"}
                     alt="projectBanner"
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Description:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Description:</p>
                   <ul className="list-disc">
                     {descriptionList.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Technologies:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Technologies:</p>
                   <ul className="list-disc">
                     {technologiesList.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Stack:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Stack:</p>
                   <p>{stack}</p>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Deployed:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Deployed:</p>
                   <p>{deployed}</p>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Github Repository Link:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Github Repository Link:</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
@@ -107,8 +103,8 @@ const ViewProject = () => {
                     {gitRepoLink}
                   </Link>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Project Link:</p>
+                <div className="sm:col-span-4 w-full">
+                  <p className="mb-2 text-2xl">Project Link:</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"

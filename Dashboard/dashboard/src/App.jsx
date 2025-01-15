@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import ManageExperience from "./pages/ManageExperience";
 import ManageProject from "./pages/ManageProject";
-import ManageSkill from "./pages/ManageSkill";
+import ManageSkill from "./pages/Manageskill";
 import ManageTimeline from "./pages/ManageTimeline";
 import ResetPassword from "./pages/ResetPassword";
 import UpdateProject from "./pages/UpdateProject";
