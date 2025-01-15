@@ -2,19 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "/src/server.js",
-      "use": "@vercel/node"
+      "src": "src/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["src/**/*"]
+      }
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/src/server.js"
+      "source": "/(.*)",
+      "destination": "/src/server.js"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Credentials", "value": "true" },
         { "key": "Access-Control-Allow-Origin", "value": "*" },

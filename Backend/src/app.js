@@ -17,7 +17,7 @@ const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
       "*",
-      "https://personal-website-na5z.vercel.app",
+      "https://portfolio-frontend-498rnwtww-prashants-projects-eab9b563.vercel.app",
       "http://localhost:5173",
     ];
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
