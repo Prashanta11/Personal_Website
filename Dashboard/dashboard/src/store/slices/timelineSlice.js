@@ -77,9 +77,8 @@ export const getAllTimeline = () => async (dispatch) => {
     );
     dispatch(
       timelineSlice.actions.getAllTimelineSuccess(response.data.timeline)
-  
     );
-   
+
     dispatch(timelineSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
@@ -116,6 +115,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
       `http://localhost:5000/api/v1/timeline/delete/${id}`,
       {
         withCredentials: true,
+        headers: { "Content-Type": "application/json" },
       }
     );
     dispatch(

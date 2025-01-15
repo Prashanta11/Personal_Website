@@ -1,8 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
     loading: false,
     user: {},
@@ -50,7 +50,6 @@ export const userSlice = createSlice({
       state.error = action.payload;
     },
 
-    
     logoutSuccess(state, action) {
       state.loading = false;
       state.isAuthenticated = false;
@@ -71,14 +70,14 @@ export const userSlice = createSlice({
       state.message = null;
       state.error = null;
     },
-    
+
     updatePasswordSuccess(state, action) {
       state.loading = false;
       state.isUpdated = true;
       state.message = action.payload;
       state.error = null;
     },
-  
+
     updatePasswordFailed(state, action) {
       state.loading = false;
       state.isUpdated = false;
@@ -91,7 +90,7 @@ export const userSlice = createSlice({
       state.message = null;
       state.error = null;
     },
-    
+
     updateProfileSuccess(state, action) {
       state.loading = false;
       state.isUpdated = true;
@@ -99,7 +98,7 @@ export const userSlice = createSlice({
       state.message = action.payload.message;
       state.error = null;
     },
-  
+
     updateProfileFailed(state, action) {
       state.loading = false;
       state.isUpdated = false;
@@ -111,7 +110,7 @@ export const userSlice = createSlice({
       state.isUpdated = false;
       state.message = null;
       state.error = null;
-    }, 
+    },
 
     clearAllErrors(state, action) {
       state.error = null;
@@ -130,63 +129,64 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userSlice.actions.loginSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-     dispatch(userSlice.actions.loginFailed(error.response.data.message));
-   // console.log("Error while logging in: ", error);
+    dispatch(userSlice.actions.loginFailed(error.response.data.message));
+    // console.log("Error while logging in: ", error);
   }
 };
-
 
 export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
-    const { data } = await axios.get(
-      "http://localhost:5000/api/v1/user/me",
-      { withCredentials: true }
-    );
+    const { data } = await axios.get("http://localhost:5000/api/v1/user/me", {
+      withCredentials: true,
+      headers: { "Content-Type": "application/json" },
+    });
     dispatch(userSlice.actions.loadUserSuccess(data.user));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-     dispatch(userSlice.actions.loadUserFailed(error.response.data.message));
-   // console.log("Error while getting user: ", error);
+    dispatch(userSlice.actions.loadUserFailed(error.response.data.message));
+    // console.log("Error while getting user: ", error);
   }
 };
 
 export const logout = () => async (dispatch) => {
-  
   try {
     const { data } = await axios.get(
       "http://localhost:5000/api/v1/user/logout",
-      { withCredentials: true ,}
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(userSlice.actions.logoutSuccess(data.message));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-     dispatch(userSlice.actions.logoutFailed(error.response.data.message));
-   // console.log("Error while getting logout: ", error);
+    dispatch(userSlice.actions.logoutFailed(error.response.data.message));
+    // console.log("Error while getting logout: ", error);
   }
 };
 
-export const updatePassword = ( currentPassword, newPassword , confirmNewPassword) => async (dispatch) => {
-  dispatch(userSlice.actions.updatePasswordRequest());
+export const updatePassword =
+  (currentPassword, newPassword, confirmNewPassword) => async (dispatch) => {
+    dispatch(userSlice.actions.updatePasswordRequest());
 
-  try {
-    const { data } = await axios.put(
-      "http://localhost:5000/api/v1/user/update/password",
-      {  currentPassword, newPassword , confirmNewPassword },
-      {
-        withCredentials: true,
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    dispatch(userSlice.actions.updatePasswordSuccess(data.message));
-    dispatch(userSlice.actions.clearAllErrors());
-  } catch (error) {
-     dispatch(userSlice.actions.updatePasswordFailed(error.response.data.message));
-   // console.log("Error while updating password: ", error);
-  }
-};
+    try {
+      const { data } = await axios.put(
+        "http://localhost:5000/api/v1/user/update/password",
+        { currentPassword, newPassword, confirmNewPassword },
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      dispatch(userSlice.actions.updatePasswordSuccess(data.message));
+      dispatch(userSlice.actions.clearAllErrors());
+    } catch (error) {
+      dispatch(
+        userSlice.actions.updatePasswordFailed(error.response.data.message)
+      );
+      // console.log("Error while updating password: ", error);
+    }
+  };
 
-export const updateProfile = ( formData) => async (dispatch) => {
+export const updateProfile = (formData) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
 
   try {
@@ -201,11 +201,12 @@ export const updateProfile = ( formData) => async (dispatch) => {
     dispatch(userSlice.actions.updateProfileSuccess(data.message));
     dispatch(userSlice.actions.clearAllErrors());
   } catch (error) {
-     dispatch(userSlice.actions.updateProfileFailed(error.response.data.message));
-   // console.log("Error while updating profile: ", error);
+    dispatch(
+      userSlice.actions.updateProfileFailed(error.response.data.message)
+    );
+    // console.log("Error while updating profile: ", error);
   }
 };
-
 
 export const resetProfile = () => (dispatch) => {
   dispatch(userSlice.actions.updateProfileResetAfterUpdate());

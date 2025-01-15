@@ -58,7 +58,7 @@ export const getAllMessages = () => async (dispatch) => {
   try {
     const response = await axios.get(
       "http://localhost:5000/api/v1/message/get",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
       messageSlice.actions.getAllMessagesSuccess(response.data.messages)
@@ -78,6 +78,7 @@ export const deleteMessage = (id) => async (dispatch) => {
       `http://localhost:5000/api/v1/message/delete/${id}`,
       {
         withCredentials: true,
+        headers: { "Content-Type": "application/json" },
       }
     );
     dispatch(messageSlice.actions.deleteMessageSuccess(response.data.message));

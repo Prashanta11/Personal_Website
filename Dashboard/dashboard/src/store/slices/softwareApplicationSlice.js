@@ -75,7 +75,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   try {
     const response = await axios.get(
       "http://localhost:5000/api/v1/softwareApplication/getall",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
       softwareApplicationSlice.actions.getAllsoftwareApplicationsSuccess(
@@ -129,6 +129,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
       `http://localhost:5000/api/v1/softwareApplication/delete/${id}`,
       {
         withCredentials: true,
+        headers: { "Content-Type": "application/json" },
       }
     );
     dispatch(

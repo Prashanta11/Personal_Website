@@ -89,7 +89,7 @@ export const getAllProjects = () => async (dispatch) => {
   try {
     const response = await axios.get(
       "http://localhost:5000/api/v1/project/getall",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
       projectSlice.actions.getAllProjectsSuccess(response.data.projects)
@@ -128,6 +128,7 @@ export const deleteProject = (id) => async (dispatch) => {
       `http://localhost:5000/api/v1/project/delete/${id}`,
       {
         withCredentials: true,
+        headers: { "Content-Type": "application/json" },
       }
     );
     dispatch(projectSlice.actions.deleteProjectSuccess(response.data.message));

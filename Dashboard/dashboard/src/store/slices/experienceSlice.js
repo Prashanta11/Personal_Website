@@ -73,17 +73,18 @@ export const getAllExperience = () => async (dispatch) => {
   try {
     const response = await axios.get(
       "http://localhost:5000/api/v1/experience/getall",
-      { withCredentials: true }
+      { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
       experienceSlice.actions.getAllExperienceSuccess(response.data.experience)
-  
     );
-   
+
     dispatch(experienceSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
-      experienceSlice.actions.getAllExperienceFailed(error.response.data.message)
+      experienceSlice.actions.getAllExperienceFailed(
+        error.response.data.message
+      )
     );
   }
 };
@@ -105,7 +106,9 @@ export const addNewExperience = (data) => async (dispatch) => {
     dispatch(experienceSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
-      experienceSlice.actions.addNewExperienceFailed(error.response.data.message)
+      experienceSlice.actions.addNewExperienceFailed(
+        error.response.data.message
+      )
     );
   }
 };
@@ -116,6 +119,7 @@ export const deleteExperience = (id) => async (dispatch) => {
       `http://localhost:5000/api/v1/experience/delete/${id}`,
       {
         withCredentials: true,
+        headers: { "Content-Type": "application/json" },
       }
     );
     dispatch(
@@ -124,7 +128,9 @@ export const deleteExperience = (id) => async (dispatch) => {
     dispatch(experienceSlice.actions.clearAllErrors());
   } catch (error) {
     dispatch(
-      experienceSlice.actions.deleteExperienceFailed(error.response.data.message)
+      experienceSlice.actions.deleteExperienceFailed(
+        error.response.data.message
+      )
     );
   }
 };
