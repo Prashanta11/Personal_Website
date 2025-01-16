@@ -18,6 +18,7 @@ const corsOptions = {
     const allowedOrigins = [
       "*",
       "https://portfolio-frontend-498rnwtww-prashants-projects-eab9b563.vercel.app",
+      "https://portfolio-frontend-alpha-six.vercel.app",
       "https://dashboard-zeta-sable.vercel.app",
       "http://localhost:5173",
     ];
