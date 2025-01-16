@@ -87,7 +87,7 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/skill/getall",
+      "https://backend-five-neon.vercel.app/api/v1/skill/getall",
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
 
@@ -105,7 +105,7 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/skill/add",
+      "https://backend-five-neon.vercel.app/api/v1/skill/add",
       data,
       {
         withCredentials: true,
@@ -125,7 +125,7 @@ export const updateSkill = (id, Proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `http://localhost:5000/api/v1/skill/update/${id}`,
+      `https://backend-five-neon.vercel.app/api/v1/skill/update/${id}`,
       { Proficiency },
       {
         withCredentials: true,
@@ -143,7 +143,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/skill/delete/${id}`,
+      `https://backend-five-neon.vercel.app/api/v1/skill/delete/${id}`,
       {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },

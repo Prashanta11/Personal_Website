@@ -74,7 +74,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/softwareApplication/getall",
+      "https://backend-five-neon.vercel.app/api/v1/softwareApplication/getall",
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
@@ -98,7 +98,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
   );
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/softwareApplication/add",
+      "https://backend-five-neon.vercel.app/api/v1/softwareApplication/add",
       data,
       {
         withCredentials: true,
@@ -126,7 +126,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/softwareApplication/delete/${id}`,
+      `https://backend-five-neon.vercel.app/api/v1/softwareApplication/delete/${id}`,
       {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },

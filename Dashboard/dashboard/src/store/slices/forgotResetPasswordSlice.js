@@ -53,7 +53,7 @@ export const forgotPassword = (email) => async (dispatch) => {
   dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
   try {
     const { data } = await axios.post(
-      "http://localhost:5000/api/v1/user/password/forgot",
+      "https://backend-five-neon.vercel.app/api/v1/user/password/forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -73,7 +73,7 @@ export const resetPassword =
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/api/v1/user/password/reset/${token}`,
+        `https://backend-five-neon.vercel.app/api/v1/user/password/reset/${token}`,
         { password, confirmPassword },
         {
           withCredentials: true,

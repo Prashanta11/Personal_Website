@@ -156,7 +156,7 @@ export const login = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler("Invalid Email or Password", 401));
   }
   console.log("Password matched for user:", email);
-  generateToken(user, "Login Successfully!", 200, res);
+  generateToken(user, "Login Successfully!", 200, res, req);
 });
 
 export const logout = catchAsyncError(async (req, res, next) => {

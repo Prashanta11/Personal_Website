@@ -57,7 +57,7 @@ export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/message/get",
+      "https://backend-five-neon.vercel.app/api/v1/message/get",
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
@@ -75,7 +75,7 @@ export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/message/delete/${id}`,
+      `https://backend-five-neon.vercel.app/api/v1/message/delete/${id}`,
       {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },

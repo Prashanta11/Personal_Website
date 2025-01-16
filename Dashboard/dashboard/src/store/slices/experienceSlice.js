@@ -72,7 +72,7 @@ export const getAllExperience = () => async (dispatch) => {
   dispatch(experienceSlice.actions.getAllExperienceRequest());
   try {
     const response = await axios.get(
-      "http://localhost:5000/api/v1/experience/getall",
+      "https://backend-five-neon.vercel.app/api/v1/experience/getall",
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
     dispatch(
@@ -93,7 +93,7 @@ export const addNewExperience = (data) => async (dispatch) => {
   dispatch(experienceSlice.actions.addNewExperienceRequest());
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/experience/add",
+      "https://backend-five-neon.vercel.app/api/v1/experience/add",
       data,
       {
         withCredentials: true,
@@ -116,7 +116,7 @@ export const deleteExperience = (id) => async (dispatch) => {
   dispatch(experienceSlice.actions.deleteExperienceRequest());
   try {
     const response = await axios.delete(
-      `http://localhost:5000/api/v1/experience/delete/${id}`,
+      `https://backend-five-neon.vercel.app/api/v1/experience/delete/${id}`,
       {
         withCredentials: true,
         headers: { "Content-Type": "application/json" },
