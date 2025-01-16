@@ -19,7 +19,7 @@ const HeroSection = () => {
       <div className="grid md:grid-cols-1 mx-auto px-6 container">
         {/* Left Content - Text and Resume Button */}
         <div className="flex flex-col flex-1 justify-center items-center px-7 h-full text-center md:text-left">
-          <div className="relative w-full h-40">
+          <div className="relative mt-32 w-full h-[3rem]">
             <h1 className="absolute inset-0 flex justify-center items-center w-full font-bold font-instrumentSans text-6xl text-center md:text-6xl italic leading-tight tracking-widest">
               <ReactTyped
                 showCursor={false}

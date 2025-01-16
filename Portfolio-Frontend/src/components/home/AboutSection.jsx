@@ -13,7 +13,7 @@ const AboutSection = () => {
       <div className="gap-7 border-2 border-gray-300 grid md:grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full">
         <div className="border-2 border-gray-300 rounded-lg h-full overflow-hidden grow">
           <img
-            src="https://www.picsum.photos/800"
+            src={userData?.avatar?.url}
             alt="Prashanta"
             className="rounded-lg w-full h-full"
           />
