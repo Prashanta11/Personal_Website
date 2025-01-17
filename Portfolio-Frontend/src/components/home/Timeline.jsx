@@ -14,8 +14,8 @@ const Timeline = () => {
   }, []);
 
   return (
-    <div id="timeline" className="mt-32">
-      <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-sm px-7 py-7 rounded-xl sh">
+    <div id="timeline" className="mt-6 sm:mt-24">
+      <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-sm px-7 py-5 sm:py-7 rounded-xl sh">
         <h2 className="pb-5 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
           Timeline
         </h2>

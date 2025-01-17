@@ -10,27 +10,27 @@ const AboutSection = () => {
 
   return (
     <>
-      <div className="gap-7 border-2 border-gray-300 grid md:grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full">
-        <div className="border-2 border-gray-300 rounded-lg h-full overflow-hidden grow">
+      <div className="gap-7 border-2 border-gray-300 grid md:grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full overflow-hidden">
+        <div className="border-2 border-gray-300 rounded-lg w-full h-full overflow-hidden md:grow">
           <img
             src={userData?.avatar?.url}
             alt="Prashanta"
-            className="rounded-lg w-full h-full"
+            className="rounded-lg w-full h-full object-cover"
           />
         </div>
         <div
           id="about"
           className="flex flex-col justify-center px-4 md:px-0 py-8 w-full"
         >
-          <h1 className="relative pb-6 pl-14 w-max h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
+          <h1 className="relative pb-6 pl-4 md:pl-14 w-max h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
             <img
               src={animatedImage}
               alt="animatedIcon"
-              className="inline-block -top-1/2 -left-0 absolute w-16 h-auto rotate-12"
+              className="inline-block -top-7 md:-top-1/2 -left-0 absolute w-10 md:w-16 h-auto rotate-12"
             />
             About Me
           </h1>
-          <p className="pt-4 font-semibold text-gray-600 text-justify text-xl italic leading-6 tracking-widest">
+          <p className="pt-4 font-semibold text-gray-600 text-xl italic leading-6 tracking-widest">
             {userData?.aboutMe}
             {/* 
             Hey there! I'm Prashanta, a developer with a deep love for

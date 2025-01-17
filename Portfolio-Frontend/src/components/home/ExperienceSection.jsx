@@ -27,7 +27,7 @@ const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-32 px-4 py-3 rounded-xl"
+      className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-3 rounded-xl"
     >
       <div className="mx-auto px-4 container">
         <h2 className="mb-8 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
@@ -37,13 +37,11 @@ const ExperienceSection = () => {
           {experiencesData?.length > 0 &&
             experiencesData?.map((exp, index) => (
               <div key={index} className="bg-cardColor my-2 p-6 rounded-lg">
-                <h3 className="pb-2 font-light text-2xl italic tracking-widest">
+                <h3 className="pb-2 font-inter text-2xl italic tracking-widest">
                   {exp.title}
                 </h3>
-                <div className="font-light text-xl italic">
-                  <p className="font-light text-gray-800">
-                    {exp?.description}{" "}
-                  </p>
+                <div className="text-xl italic">
+                  <p className="text-gray-800">{exp?.description} </p>
                   <p className="text-sm">{exp.duration}</p>
                   <p className="mt-4">
                     {exp?.date?.from} - {exp?.date?.to}

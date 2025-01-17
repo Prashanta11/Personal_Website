@@ -21,6 +21,7 @@ const corsOptions = {
       "https://portfolio-frontend-alpha-six.vercel.app",
       "https://dashboard-zeta-sable.vercel.app",
       "http://localhost:5173",
+      "https://www.prashantadeuja.com.np",
     ];
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       // !origin check allows requests from non-browser clients like Postman

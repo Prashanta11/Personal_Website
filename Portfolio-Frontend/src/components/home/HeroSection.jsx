@@ -19,16 +19,17 @@ const HeroSection = () => {
       <div className="grid md:grid-cols-1 mx-auto px-6 container">
         {/* Left Content - Text and Resume Button */}
         <div className="flex flex-col flex-1 justify-center items-center px-7 h-full text-center md:text-left">
-          <div className="relative mt-32 w-full h-[3rem]">
-            <h1 className="absolute inset-0 flex justify-center items-center w-full font-bold font-instrumentSans text-6xl text-center md:text-6xl italic leading-tight tracking-widest">
+          <div className="relative mt-24 md:mt-32 w-full lg:h-[3rem]">
+            <h1 className="absolute inset-0 flex justify-center items-center w-full font-instrumentSans text-2xl text-center md:text-6xl leading-tight">
               <ReactTyped
+                className="font-semibold *:!font-instrumentSans italic tracking-wider"
                 showCursor={false}
                 strings={["Hi, I'm Prashanta"]}
                 typeSpeed={40}
               />
             </h1>
           </div>
-          <p className="mt-4 max-w-lg font-semibold text-black text-sm md:text-2xl italic -black">
+          <p className="mt-4 max-w-lg font-medium text-black text-sm md:text-xl italic">
             —a curious mind crafting code by day and melodies by night. Whether
             coding solutions or singing tunes, I’m all about turning passion
             into joy and exploring what’s next!

@@ -32,7 +32,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-20 px-4 py-10 rounded-xl text-black">
+      <footer className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-5 sm:py-10 rounded-xl text-black">
         <div className="flex md:flex-row flex-col justify-between gap-8 mx-auto container">
           {/* About Section */}
           <div className="flex flex-col flex-1 justify-between text-center">
@@ -77,7 +77,9 @@ const Footer = () => {
             id="contact"
             className="flex-1 border-2 border-gray-300 shadow-gray-400 shadow-sm md:mx-10 px-7 py-7 rounded-xl"
           >
-            <h3 className="mb-2 font-bold text-2xl">Contact Me</h3>
+            <h3 className="mb-2 font-instrumentSans font-semibold text-2xl sm:text-4xl italic tracking-wider">
+              Contact Me
+            </h3>
             <form
               onSubmit={handleSubmit}
               action={handleSubmit}

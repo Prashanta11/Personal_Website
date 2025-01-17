@@ -49,16 +49,19 @@ const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
-      <div className="z-50 sticky lg:flex justify-between items-center hidden bg-bodyColor py-5 p-5">
-        <nav className="mx-auto">
-          <ul className="flex space-x-6 font-semibold text-lg">
+      <div className="z-50 sticky lg:flex justify-around items-center hidden bg-bodyColor p-5">
+        <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-4 py-3 rounded-xl font-instrumentSans font-semibold italic tracking-wider">
+          PD
+        </div>
+        <nav className="">
+          <ul className="flex space-x-6 text-lg">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.link}
                   smooth={true}
                   offset={-window.innerHeight / 4} // Adjust the offset to center the element
-                  className="text-black hover:text-blue-800"
+                  className="font-[500] font-instrumentSans text-black hover:text-blue-800 italic tracking-wider cursor-pointer"
                 >
                   {item.name}
                 </Link>

@@ -12,7 +12,7 @@ const MyApps = () => {
   return (
     <section
       id="application"
-      className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-32 px-4 py-3 rounded-xl"
+      className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-3 rounded-xl"
     >
       <div className="mx-auto px-4 container">
         <h2 className="mb-14 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
