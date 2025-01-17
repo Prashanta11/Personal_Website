@@ -19,7 +19,7 @@ const Home = () => {
               // backgroundImage: "url('https://www.picsum.photos/1920/1080')",
             }
           }
-          className="relative bg-cover bg-no-repeat bg-center min-h-[67vh] text-black"
+          className="relative max-[500px]:flex max-[500px]:justify-center max-[500px]:items-center bg-cover bg-no-repeat bg-center min-h-[67vh] text-black"
         >
           <HeroSection />
           {/* <div className="absolute inset-0 bg-black/10 pointer-events-none"></div> */}
