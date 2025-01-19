@@ -22,7 +22,7 @@ const HeroSection = () => {
           <div className="relative mt-24 md:mt-32 w-full lg:h-[3rem]">
             <h1 className="absolute inset-0 flex justify-center items-center w-full font-instrumentSans text-2xl text-center md:text-6xl leading-tight">
               <ReactTyped
-                className="font-semibold *:!font-instrumentSans italic tracking-wider"
+                className="font-semibold *:!font-instrumentSans text-nowrap italic tracking-wider"
                 showCursor={false}
                 strings={["Hi, I'm Prashanta"]}
                 typeSpeed={40}
@@ -38,7 +38,7 @@ const HeroSection = () => {
             href={userData?.resume?.url} // Replace with the actual resume file path
             download
             target="_blank"
-            className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
+            className="inline-block bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-6 sm:px-8 py-3 rounded font-semibold text-black text-nowrap"
           >
             Download Resume
           </a>
