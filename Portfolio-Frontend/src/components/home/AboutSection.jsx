@@ -20,15 +20,17 @@ const AboutSection = () => {
         </div>
         <div
           id="about"
-          className="flex flex-col justify-center px-4 md:px-0 py-8 w-full"
+          className="flex flex-col justify-center px-3 sm:px-0 py-8 max-[500px]:pb-4 w-full"
         >
-          <h1 className="relative pb-6 pl-4 md:pl-14 w-max h-max font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
+          <h1 className="relative pb-6 pl-4 md:pl-14 w-full">
             <img
               src={animatedImage}
               alt="animatedIcon"
-              className="inline-block -top-7 md:-top-1/2 -left-0 absolute w-10 md:w-16 h-auto rotate-12"
+              className="-top-10 md:-top-1/2 -left-2 md:-left-0 absolute w-10 md:w-16 h-auto rotate-12"
             />
-            About Me
+            <div className="font-bold font-instrumentSans text-4xl text-left sm:text-6xl italic tracking-widest">
+              About Me
+            </div>
           </h1>
           <p className="pt-4 font-semibold text-gray-600 text-xl italic leading-6 tracking-widest">
             {userData?.aboutMe}
