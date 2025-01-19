@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
+
 const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -14,7 +15,6 @@ const Footer = () => {
       const data = Object.fromEntries(formData.entries());
       setLoading(true);
       const response = await post("message/send", data);
-
       setLoading(false);
       setMessage(response.message);
     } catch (error) {
@@ -35,16 +35,16 @@ const Footer = () => {
       <footer className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-5 sm:py-10 rounded-xl text-black">
         <div className="flex md:flex-row flex-col justify-between gap-8 mx-auto container">
           {/* About Section */}
-          <div className="flex flex-col flex-1 justify-between text-center">
-            <h3 className="mb-2 font-bold font-instrumentSans text-6xl italic tracking-widest">
+          <div className="flex flex-col flex-1 justify-between gap-6 sm:gap-8 text-center">
+            <h3 className="mb-2 font-bold font-instrumentSans text-4xl sm:text-6xl italic tracking-widest">
               Let's Create Together
             </h3>
-            <p className="mb-4 py-7 font-semibold text-2xl italic">
+            <p className="sm:font-semibold text-2xl italic">
               Thank you for visiting! Curious to learn more about my journey and
               approach? I’d love to share over a coffee chat or during an
               interview. Feel free to connect—I’m just a message away!
             </p>
-            <div className="flex justify-center gap-5 mt-4">
+            <div className="flex justify-center gap-5">
               <a
                 href=""
                 target="_blank"
@@ -75,14 +75,14 @@ const Footer = () => {
           {/* Contact Form Section */}
           <div
             id="contact"
-            className="flex-1 border-2 border-gray-300 shadow-gray-400 shadow-sm md:mx-10 px-7 py-7 rounded-xl"
+            className="flex-1 border-2 border-gray-300 shadow-gray-400 shadow-sm md:mx-10 p-5 sm:p-7 rounded-xl"
           >
             <h3 className="mb-2 font-instrumentSans font-semibold text-2xl sm:text-4xl italic tracking-wider">
               Contact Me
             </h3>
             <form
               onSubmit={handleSubmit}
-              action={handleSubmit}
+              // action={handleSubmit}
               // method="POST"
               className="space-y-4"
             >
@@ -140,7 +140,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="pt-10 w-full text-center">
+      <div className="pt-8 sm:pt-10 w-full text-center">
         Copyright &copy; 2021, Prashanta Deuja
       </div>
     </>
