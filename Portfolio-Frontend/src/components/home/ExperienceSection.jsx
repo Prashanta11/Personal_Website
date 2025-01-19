@@ -29,21 +29,24 @@ const ExperienceSection = () => {
       id="experience"
       className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-3 rounded-xl"
     >
-      <div className="mx-auto px-4 container">
-        <h2 className="mb-8 font-bold font-instrumentSans text-6xl text-center italic tracking-widest">
+      <div className="flex flex-col gap-5 sm:gap-8 mx-auto container">
+        <h2 className="font-bold font-instrumentSans text-4xl text-center sm:text-6xl italic tracking-widest">
           Experience
         </h2>
-        <div className="gap-8 grid sm:grid-cols-1 md:grid-cols-2">
+        <div className="gap-5 sm:gap-8 grid grid-cols-1 md:grid-cols-2">
           {experiencesData?.length > 0 &&
             experiencesData?.map((exp, index) => (
-              <div key={index} className="bg-cardColor my-2 p-6 rounded-lg">
-                <h3 className="pb-2 font-inter text-2xl italic tracking-widest">
+              <div
+                key={index}
+                className="bg-cardColor p-4 md:p-6 rounded-lg w-full"
+              >
+                <h3 className="pb-2 font-inter font-semibold text-xl italic sm:tracking-widest">
                   {exp.title}
                 </h3>
                 <div className="text-xl italic">
                   <p className="text-gray-800">{exp?.description} </p>
                   <p className="text-sm">{exp.duration}</p>
-                  <p className="mt-4">
+                  <p className="mt-4 font-semibold">
                     {exp?.date?.from} - {exp?.date?.to}
                   </p>
                 </div>
