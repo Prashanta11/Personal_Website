@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/home/ExperienceSection";
 import HeroSection from "@/components/home/HeroSection";
 import MyApps from "@/components/home/MyApps";
 import Projects from "@/components/home/Projects";
+import Scrollup from "@/components/home/Scrollup";
 import SkillSlider from "@/components/home/SkillSlider";
 import Timeline from "@/components/home/Timeline";
 
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <div className="bg-bodyColor px-5 lg:px-20 xl:px-52">
       <Header />
+      <Scrollup />
       <div className="bg-bodyColor pb-10 text-black">
         <div
           style={
