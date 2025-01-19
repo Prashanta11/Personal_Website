@@ -7,7 +7,7 @@ import ProjectDescription from "./pages/ProjectDescription";
 
 function App() {
   return (
-    <div className="bg-bodyColor min-h-screen">
+    <div className="bg-bodyColor min-h-screen" id="nav">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
