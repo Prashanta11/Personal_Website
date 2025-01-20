@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /signup/
+
+Allow: /about/
+Allow: /projects/
+Allow: /contact/
+Allow: /portfolio/
+
+Sitemap: https://www.prashantadeuja.com.np/sitemap.xml
