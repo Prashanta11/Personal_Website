@@ -3,8 +3,10 @@ import { useRef } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-scroll";
 import { navItems } from "./Header";
+
 const Sidebar = ({ isOpen, onClose }) => {
   const sidebarRef = useRef(null);
+
   return createPortal(
     <div
       style={{ display: isOpen ? "block" : "none" }}
@@ -13,15 +15,20 @@ const Sidebar = ({ isOpen, onClose }) => {
           onClose();
         }
       }}
-      className="z-50 fixed inset-0 lg:hidden bg-white/20 backdrop-blur-sm"
+      className="z-50 fixed inset-0 lg:hidden bg-black/50 backdrop-blur-sm"
     >
       <nav
         ref={sidebarRef}
         style={{ transform: isOpen ? "translateX(0)" : "translateX(-100%)" }}
-        className="flex flex-col items-center bg-bodyColor shadow-2xl shadow-white pt-2 w-1/2 h-full transition-all"
+        className="flex flex-col items-center bg-bodyColor shadow-2xl shadow-white pt-2 w-1/2 h-full transition-transform duration-300 ease-in-out"
+        aria-hidden={!isOpen}
       >
         <div className="flex mb-4 w-full">
-          <button onClick={onClose} className="mr-2 ml-auto text-2xl">
+          <button
+            onClick={onClose}
+            className="mr-2 ml-auto text-2xl"
+            aria-label="Close sidebar"
+          >
             <X size={30} />
           </button>
         </div>

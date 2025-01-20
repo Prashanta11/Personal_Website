@@ -1,10 +1,9 @@
 import { Home, User2 } from "lucide-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { FaCode, FaPhone } from "react-icons/fa";
 import { IoIosApps } from "react-icons/io";
 import { MdOutlineMenuBook, MdTimeline } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
-// import { NavLink } from "react-router";
 import { Link } from "react-scroll";
 import Sidebar from "./Sidebar";
 
@@ -45,23 +44,28 @@ export const navItems = [
     icon: <FaPhone />,
   },
 ];
+
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const memoizedNavItems = useMemo(() => navItems, []);
+
   return (
     <>
       <div className="z-50 sticky lg:flex justify-around items-center hidden bg-bodyColor p-5">
         <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-4 py-3 rounded-xl font-instrumentSans font-semibold italic tracking-wider">
           PD
         </div>
-        <nav className="">
+        <nav>
           <ul className="flex space-x-6 text-lg">
-            {navItems.map((item, index) => (
+            {memoizedNavItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.link}
                   smooth={true}
                   offset={-window.innerHeight / 4} // Adjust the offset to center the element
                   className="font-[500] font-instrumentSans text-black hover:text-blue-800 italic tracking-wider cursor-pointer"
+                  aria-label={`Navigate to ${item.name}`}
                 >
                   {item.name}
                 </Link>
@@ -70,15 +74,20 @@ const Header = () => {
           </ul>
         </nav>
       </div>
+
       <div className="flex lg:hidden">
         <div className="flex justify-between items-center bg-bodyColor py-5 w-full">
-          {/* <h1 className="font-bold text-2xl">Portfolio</h1> */}
-          <button onClick={() => setSidebarOpen(true)} className="text-2xl">
+          <button
+            onClick={() => setSidebarOpen(true)}
+            className="text-2xl"
+            aria-label="Open navigation menu"
+          >
             <RxHamburgerMenu size={30} />
           </button>
         </div>
       </div>
-      {/* sidebar */}
+
+      {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
     </>
   );

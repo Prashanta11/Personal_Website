@@ -8,6 +8,7 @@ import { FaSquareGithub } from "react-icons/fa6";
 const Footer = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
@@ -32,7 +33,10 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-5 sm:py-10 rounded-xl text-black">
+      <footer
+        className="border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm mt-6 sm:mt-24 px-4 py-5 sm:py-10 rounded-xl text-black"
+        title="Prashanta Deuja Footer Section"
+      >
         <div className="flex md:flex-row flex-col justify-between gap-8 mx-auto container">
           {/* About Section */}
           <div className="flex flex-col flex-1 justify-between gap-6 sm:gap-8 text-center">
@@ -46,26 +50,29 @@ const Footer = () => {
             </p>
             <div className="flex justify-center gap-5">
               <a
-                href=""
+                href="mailto:prashanta@example.com"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
+                aria-label="Send an email to Prashanta"
               >
                 <BiLogoGmail size={30} />
               </a>
               <a
-                href="https://www.facebook.com/prashanta.kc.1"
+                href="https://www.linkedin.com/in/prashanta"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
+                aria-label="Visit Prashanta's LinkedIn profile"
               >
                 <FaLinkedin size={30} />
               </a>
               <a
-                href=""
+                href="https://github.com/prashanta"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center mt-4 font-semibold text-black text-xl hover:text-blue-800"
+                aria-label="Visit Prashanta's GitHub profile"
               >
                 <FaSquareGithub size={30} />
               </a>
@@ -76,16 +83,16 @@ const Footer = () => {
           <div
             id="contact"
             className="flex-1 border-2 border-gray-300 shadow-gray-400 shadow-sm md:mx-10 p-5 sm:p-7 rounded-xl"
+            role="form"
+            aria-labelledby="contact"
           >
-            <h3 className="mb-2 font-instrumentSans font-semibold text-2xl sm:text-4xl italic tracking-wider">
+            <h3
+              className="mb-2 font-instrumentSans font-semibold text-2xl sm:text-4xl italic tracking-wider"
+              id="contact"
+            >
               Contact Me
             </h3>
-            <form
-              onSubmit={handleSubmit}
-              // action={handleSubmit}
-              // method="POST"
-              className="space-y-4"
-            >
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block mb-1" htmlFor="name">
                   Your Name
@@ -96,6 +103,7 @@ const Footer = () => {
                   name="senderName"
                   className="border-gray-100 bg-gray-300 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 w-full text-black focus:outline-none"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -108,6 +116,7 @@ const Footer = () => {
                   name="subject"
                   className="border-gray-100 bg-gray-300 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 w-full text-black focus:outline-none"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -120,12 +129,14 @@ const Footer = () => {
                   rows="4"
                   className="border-gray-100 bg-gray-300 px-3 py-2 border rounded focus:ring-2 focus:ring-blue-500 w-full text-black focus:outline-none"
                   required
+                  aria-required="true"
                 ></textarea>
               </div>
               <button
                 type="submit"
                 disabled={loading}
                 className="inline-flex justify-center items-center gap-1 bg-slate-200 hover:bg-slate-50 shadow-black shadow-sm mt-8 px-8 py-3 rounded font-semibold text-black"
+                aria-label="Submit contact form"
               >
                 Send Message{" "}
                 {loading && <Loader2 size={20} className="animate-spin" />}
