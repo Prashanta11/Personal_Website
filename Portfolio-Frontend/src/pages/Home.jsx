@@ -13,39 +13,6 @@ import { Helmet } from "react-helmet-async"; // Import Helmet for dynamic meta t
 const Home = () => {
   return (
     <>
-      {/* Helmet for dynamic meta tags */}
-      <Helmet>
-        <title>Prashanta Deuja - Full-stack Developer Portfolio</title>
-        <meta
-          name="description"
-          content="Portfolio website of Prashanta Deuja, showcasing skills, projects, and professional journey."
-        />
-        <meta
-          name="keywords"
-          content="Prashanta Deuja, Full-stack Developer, React.js, Node.js, Web Development, Cybersecurity"
-        />
-        <meta
-          property="og:title"
-          content="Prashanta Deuja - Full-stack Developer Portfolio"
-        />
-        <meta
-          property="og:description"
-          content="Explore Prashanta Deuja's full-stack projects and professional journey."
-        />
-        <meta property="og:image" content="/images/preview.jpg" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Prashanta Deuja - Full-stack Developer Portfolio"
-        />
-        <meta
-          name="twitter:description"
-          content="Portfolio website of Prashanta Deuja, showcasing skills, projects, and professional journey."
-        />
-        <meta name="twitter:image" content="/images/preview.jpg" />
-      </Helmet>
-
       <div className="bg-bodyColor px-5 lg:px-20 xl:px-52">
         <Header />
         <Scrollup />

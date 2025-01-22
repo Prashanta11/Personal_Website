@@ -11,53 +11,19 @@ const AboutSection = () => {
 
   return (
     <>
-      {/* SEO Tags */}
-      <Helmet>
-        <title>About Me - Prashanta Deuja</title>
-        <meta
-          name="description"
-          content={
-            userData?.aboutMe ||
-            "Learn more about Prashanta Deuja, a full-stack developer passionate about technology and problem-solving."
-          }
-        />
-        <meta property="og:title" content="About Me - Prashanta Deuja" />
-        <meta
-          property="og:description"
-          content={
-            userData?.aboutMe ||
-            "Learn more about Prashanta Deuja, a full-stack developer passionate about technology and problem-solving."
-          }
-        />
-        <meta
-          property="og:image"
-          content={userData?.avatar?.url || "/default-avatar.jpg"}
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About Me - Prashanta Deuja" />
-        <meta
-          name="twitter:description"
-          content={
-            userData?.aboutMe ||
-            "Learn more about Prashanta Deuja, a full-stack developer passionate about technology and problem-solving."
-          }
-        />
-        <meta
-          name="twitter:image"
-          content={userData?.avatar?.url || "/default-avatar.jpg"}
-        />
-      </Helmet>
-
       {/* About Section */}
       <div className="gap-7 border-2 border-gray-300 grid md:grid-cols-2 bg-gray-200 hover:bg-bodyColor shadow-gray-400 shadow-sm px-3 py-3 rounded-xl h-full overflow-hidden">
         <div className="border-2 border-gray-300 rounded-lg w-full h-full overflow-hidden md:grow">
           <img
-            src={userData?.avatar?.url}
+            src={userData?.avatar?.url + "?fm=webp&auto=compress,format"}
             alt="Prashanta"
             className="rounded-lg w-full h-full object-cover"
+            width={400} // Set the appropriate width
+            height={400} // Set the appropriate height
+            loading="lazy"
           />
         </div>
+
         <div
           id="about"
           className="flex flex-col justify-center px-3 sm:px-0 py-8 max-[500px]:pb-4 w-full"

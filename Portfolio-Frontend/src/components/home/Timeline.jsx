@@ -15,13 +15,6 @@ const Timeline = () => {
 
   return (
     <div id="timeline" className="mt-6 sm:mt-24">
-      <Helmet>
-        <title>Timeline - Prashanta's Portfolio</title>
-        <meta
-          name="description"
-          content="Explore the professional timeline of Prashanta, showcasing key achievements and milestones."
-        />
-      </Helmet>
       <div className="border-2 border-gray-300 bg-gray-200 hover:bg-bodyColor shadow-sm px-7 py-5 sm:py-7 rounded-xl">
         <h2 className="pb-5 font-bold font-instrumentSans text-4xl text-center sm:text-6xl italic tracking-widest">
           Timeline

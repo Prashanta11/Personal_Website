@@ -12,27 +12,6 @@ const ExperienceSection = () => {
 
   return (
     <>
-      {/* SEO Tags */}
-      <Helmet>
-        <title>Experience - Prashanta Deuja</title>
-        <meta
-          name="description"
-          content="Explore the professional experience of Prashanta Deuja, including roles at XYZ School and ABC Telecom, showcasing skills and contributions."
-        />
-        <meta property="og:title" content="Experience - Prashanta Deuja" />
-        <meta
-          property="og:description"
-          content="Explore the professional experience of Prashanta Deuja, including roles at XYZ School and ABC Telecom, showcasing skills and contributions."
-        />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Experience - Prashanta Deuja" />
-        <meta
-          name="twitter:description"
-          content="Explore the professional experience of Prashanta Deuja, including roles at XYZ School and ABC Telecom, showcasing skills and contributions."
-        />
-      </Helmet>
-
       {/* Experience Section */}
       <section
         id="experience"

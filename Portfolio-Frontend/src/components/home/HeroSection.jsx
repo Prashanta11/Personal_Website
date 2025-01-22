@@ -14,34 +14,6 @@ const HeroSection = () => {
 
   return (
     <>
-      {/* SEO Meta Tags */}
-      <Helmet>
-        <title>Prashanta Deuja - Developer & Singer</title>
-        <meta
-          name="description"
-          content="Prashanta Deuja is a full-stack developer and a passionate singer. Explore his portfolio for development projects, music, and more."
-        />
-        <meta
-          property="og:title"
-          content="Prashanta Deuja - Developer & Singer"
-        />
-        <meta
-          property="og:description"
-          content="Prashanta Deuja is a full-stack developer and a passionate singer. Explore his portfolio for development projects, music, and more."
-        />
-        <meta property="og:image" content={userData?.avatar?.url} />
-        <meta name="twitter:card" content="summary" />
-        <meta
-          name="twitter:title"
-          content="Prashanta Deuja - Developer & Singer"
-        />
-        <meta
-          name="twitter:description"
-          content="Prashanta Deuja is a full-stack developer and a passionate singer. Explore his portfolio for development projects, music, and more."
-        />
-        <meta name="twitter:image" content={userData?.avatar?.url} />
-      </Helmet>
-
       <section
         id="home"
         className="flex justify-center items-center bg-gray-200 hover:bg-bodyColor h-full text-black"
@@ -50,20 +22,20 @@ const HeroSection = () => {
           {/* Left Content - Text and Resume Button */}
           <div className="flex flex-col flex-1 justify-center items-center px-7 h-full text-center md:text-left">
             <div className="relative mt-24 md:mt-32 w-full lg:h-[3rem]">
-              <h1 className="absolute inset-0 flex justify-center items-center w-full font-instrumentSans text-2xl text-center md:text-6xl leading-tight">
+              <div className="absolute inset-0 flex justify-center items-center w-full font-instrumentSans text-2xl text-center md:text-6xl leading-tight">
                 <ReactTyped
                   className="font-semibold *:!font-instrumentSans text-nowrap italic tracking-wider"
                   showCursor={false}
                   strings={["Hi, I'm Prashanta"]}
                   typeSpeed={40}
                 />
-              </h1>
+              </div>
             </div>
-            <p className="mt-4 max-w-lg font-medium text-black text-sm md:text-xl italic">
+            <h1 className="mt-4 max-w-lg font-medium text-black text-sm md:text-xl italic">
               —a curious mind crafting code by day and melodies by night.
               Whether coding solutions or singing tunes, I’m all about turning
               passion into joy and exploring what’s next!
-            </p>
+            </h1>
             <a
               href={userData?.resume?.url} // Replace with the actual resume file path
               download
