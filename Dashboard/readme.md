@@ -76,4 +76,4 @@ dashboard/
 
 
 ## Contact
-- For questions or feedback, contact me at [prashantadeuja@example.com].
+- For questions or feedback, contact me at [prashantadeuja@gmail.com].
