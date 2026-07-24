@@ -1,7 +1,6 @@
 import { get } from "@/api/api";
 import animatedImage from "@/assets/animatedIcon.svg";
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
 
 const AboutSection = () => {
   const [userData, setUserdata] = useState({});
